@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b65">
+<title>SjukhusSystem Sverige</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172b43}
+header{background:#123b65;color:white;padding:22px 18px}
+header h1{font-size:23px;margin:0}
+header p{margin:7px 0 0;color:#cbdbea}
+main{max-width:1100px;margin:auto;padding:20px}
+.welcome{margin-bottom:22px}
+.welcome h2{margin-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
+.card{background:white;padding:19px;border-radius:13px;box-shadow:0 2px 9px #152d4610}
+.card .number{font-size:29px;font-weight:bold;color:#1769a9;margin-top:10px}
+.card p{color:#63758a;margin:0}
+.section{background:white;padding:20px;border-radius:13px;margin-top:20px}
+button{border:0;border-radius:8px;padding:12px 16px;background:#1769a9;color:white;font-weight:bold;cursor:pointer}
+button:hover{background:#105181}
+nav{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+nav button{background:#e1ebf5;color:#123b65}
+nav button.active{background:#123b65;color:white}
+input{width:100%;padding:12px;border:1px solid #ccd6e1;border-radius:8px;margin:8px 0 14px;font-size:16px}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:12px;border-bottom:1px solid #e5eaf0}
+.small{color:#64748b;font-size:13px}
+footer{text-align:center;padding:25px;color:#718096}
+.panel{display:none}
+.panel.active{display:block}
+</style>
+</head>
+<body>
+<header>
+<h1>✚ SjukhusSystem Sverige</h1>
+<p>Digital vårdplattform</p>
+</header>
+<main>
+<div class="welcome">
+<h2>Välkommen!</h2>
+<p>Översikt över sjukhusets verksamhet.</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<p>Patienter</p>
+<div class="number">0</div>
+</div>
+<div class="card">
+<p>Läkare</p>
+<div class="number">0</div>
+</div>
+<div class="card">
+<p>Bokningar idag</p>
+<div class="number">0</div>
+</div>
+<div class="card">
+<p>Akutmottagning</p>
+<div class="number">0</div>
+</div>
+</div>
+
+<nav>
+<button class="active" onclick="showPanel('home',this)">Översikt</button>
+<button onclick="showPanel('patients',this)">Patienter</button>
+<button onclick="showPanel('doctors',this)">Personal</button>
+<button onclick="showPanel('appointments',this)">Bokningar</button>
+<button onclick="showPanel('emergency',this)">Akuten</button>
+</nav>
+
+<div id="home" class="panel active">
+<div class="section">
+<h2>Välkommen till systemet</h2>
+<p>Här kommer sjukhusets olika funktioner att samlas.</p>
+<p class="small">Detta är en första demonstrationsversion.</p>
+</div>
+</div>
+
+<div id="patients" class="panel">
+<div class="section">
+<h2>Patientregister</h2>
+<p>Demonstration – använd inga riktiga patientuppgifter.</p>
+<input id="patient" placeholder="Exempel: Testpatient">
+<button onclick="addPatient()">Lägg till testpatient</button>
+<ul id="patientList"></ul>
+</div>
+</div>
+
+<div id="doctors" class="panel">
+<div class="section">
+<h2>Personal</h2>
+<p>Här bygger vi senare register för läkare och sjuksköterskor.</p>
+</div>
+</div>
+
+<div id="appointments" class="panel">
+<div class="section">
+<h2>Bokningar</h2>
+<p>Här bygger vi senare kalender och tidsbokning.</p>
+</div>
+</div>
+
+<div id="emergency" class="panel">
+<div class="section">
+<h2>Akutmottagning</h2>
+<p>Här bygger vi senare en översikt för akutmottagningen.</p>
+</div>
+</div>
+
+</main>
+<footer>
+SjukhusSystem Sverige © 2026
+</footer>
+
+<script>
+function showPanel(id,button){
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+}
+function addPatient(){
+const field=document.getElementById('patient');
+if(!field.value.trim())return;
+const li=document.createElement('li');
+li.textContent=field.value;
+document.getElementById('patientList').appendChild(li);
+field.value='';
+}
+</script>
+</body>
+</html>
