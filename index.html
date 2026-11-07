@@ -1,136 +1,55 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123b65">
-<title>SjukhusSystem Sverige</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153f68"><title>SjukhusSystem Sverige</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172b43}
-header{background:#123b65;color:white;padding:22px 18px}
-header h1{font-size:23px;margin:0}
-header p{margin:7px 0 0;color:#cbdbea}
-main{max-width:1100px;margin:auto;padding:20px}
-.welcome{margin-bottom:22px}
-.welcome h2{margin-bottom:5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
-.card{background:white;padding:19px;border-radius:13px;box-shadow:0 2px 9px #152d4610}
-.card .number{font-size:29px;font-weight:bold;color:#1769a9;margin-top:10px}
-.card p{color:#63758a;margin:0}
-.section{background:white;padding:20px;border-radius:13px;margin-top:20px}
-button{border:0;border-radius:8px;padding:12px 16px;background:#1769a9;color:white;font-weight:bold;cursor:pointer}
-button:hover{background:#105181}
-nav{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
-nav button{background:#e1ebf5;color:#123b65}
-nav button.active{background:#123b65;color:white}
-input{width:100%;padding:12px;border:1px solid #ccd6e1;border-radius:8px;margin:8px 0 14px;font-size:16px}
-table{width:100%;border-collapse:collapse}
-td,th{text-align:left;padding:12px;border-bottom:1px solid #e5eaf0}
-.small{color:#64748b;font-size:13px}
-footer{text-align:center;padding:25px;color:#718096}
-.panel{display:none}
-.panel.active{display:block}
-</style>
-</head>
+:root{--navy:#153f68;--blue:#246da2;--bg:#f1f5fa;--ink:#203247;--muted:#68798b;--line:#dce5ee;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--navy);color:white;padding:22px 18px}header h1{font-size:25px;margin:0 0 7px}header p{margin:0;color:#d4e3f2}
+main{max-width:1050px;margin:auto;padding:22px 16px 40px}.notice{background:#fff8e6;border:1px solid #f1d48a;color:#72520b;padding:13px 15px;border-radius:12px;line-height:1.45;margin-bottom:20px;font-size:14px}
+h2{font-size:25px;margin:8px 0}.intro{color:var(--muted);margin:0 0 20px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.stat,.panel{background:white;border-radius:18px;padding:20px;box-shadow:0 4px 16px #193b5b0b}.stat span{display:block;color:var(--muted)}.stat strong{display:block;font-size:30px;color:var(--blue);margin-top:8px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}nav button,.btn{border:0;border-radius:11px;padding:12px 16px;background:#dfeaf5;color:var(--navy);font-weight:700;font-size:15px;cursor:pointer}nav button.active,.btn.primary{background:var(--navy);color:white}.btn.danger{background:#fff0ef;color:var(--red)}.btn.small{padding:8px 11px;font-size:13px}
+.panel h3{margin:0 0 16px;font-size:21px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.search{flex:1;min-width:180px}
+input,textarea{width:100%;padding:12px;border:1px solid #cbd7e3;border-radius:10px;font:inherit;background:white;color:var(--ink)}input:focus,textarea:focus{outline:2px solid #8bbce2}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}th{font-size:13px;color:var(--muted)}.table-wrap{overflow-x:auto}.empty{text-align:center;color:var(--muted);padding:24px 10px}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}.field.full{grid-column:1/-1}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.hidden{display:none!important}.muted{color:var(--muted);font-size:14px}footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:560px){header h1{font-size:22px}main{padding:17px 12px 30px}.panel{padding:16px}form{grid-template-columns:1fr}.field.full{grid-column:auto}.stat{padding:15px}.stat strong{font-size:27px}th,td{padding:10px 7px;font-size:13px}}
+</style></head>
 <body>
-<header>
-<h1>✚ SjukhusSystem Sverige</h1>
-<p>Digital vårdplattform</p>
-</header>
+<header><h1>✚ SjukhusSystem Sverige</h1><p>Digital vårdplattform</p></header>
 <main>
-<div class="welcome">
-<h2>Välkommen!</h2>
-<p>Översikt över sjukhusets verksamhet.</p>
-</div>
-
-<div class="grid">
-<div class="card">
-<p>Patienter</p>
-<div class="number">0</div>
-</div>
-<div class="card">
-<p>Läkare</p>
-<div class="number">0</div>
-</div>
-<div class="card">
-<p>Bokningar idag</p>
-<div class="number">0</div>
-</div>
-<div class="card">
-<p>Akutmottagning</p>
-<div class="number">0</div>
-</div>
-</div>
-
-<nav>
-<button class="active" onclick="showPanel('home',this)">Översikt</button>
-<button onclick="showPanel('patients',this)">Patienter</button>
-<button onclick="showPanel('doctors',this)">Personal</button>
-<button onclick="showPanel('appointments',this)">Bokningar</button>
-<button onclick="showPanel('emergency',this)">Akuten</button>
-</nav>
-
-<div id="home" class="panel active">
-<div class="section">
-<h2>Välkommen till systemet</h2>
-<p>Här kommer sjukhusets olika funktioner att samlas.</p>
-<p class="small">Detta är en första demonstrationsversion.</p>
-</div>
-</div>
-
-<div id="patients" class="panel">
-<div class="section">
-<h2>Patientregister</h2>
-<p>Demonstration – använd inga riktiga patientuppgifter.</p>
-<input id="patient" placeholder="Exempel: Testpatient">
-<button onclick="addPatient()">Lägg till testpatient</button>
-<ul id="patientList"></ul>
-</div>
-</div>
-
-<div id="doctors" class="panel">
-<div class="section">
-<h2>Personal</h2>
-<p>Här bygger vi senare register för läkare och sjuksköterskor.</p>
-</div>
-</div>
-
-<div id="appointments" class="panel">
-<div class="section">
-<h2>Bokningar</h2>
-<p>Här bygger vi senare kalender och tidsbokning.</p>
-</div>
-</div>
-
-<div id="emergency" class="panel">
-<div class="section">
-<h2>Akutmottagning</h2>
-<p>Här bygger vi senare en översikt för akutmottagningen.</p>
-</div>
-</div>
-
-</main>
-<footer>
-SjukhusSystem Sverige © 2026
-</footer>
-
+<div class="notice"><strong>Demoversion:</strong> Använd endast påhittade testuppgifter. Uppgifterna sparas lokalt i den här webbläsaren. Detta är inte ett säkert journalsystem. Lägg aldrig in riktiga patientuppgifter.</div>
+<section id="overview"><h2>Välkommen!</h2><p class="intro">Översikt över sjukhusets verksamhet.</p>
+<div class="stats"><div class="stat"><span>Patienter</span><strong id="countPatients">0</strong></div><div class="stat"><span>Läkare</span><strong>0</strong></div><div class="stat"><span>Bokningar idag</span><strong>0</strong></div><div class="stat"><span>Akutmottagning</span><strong>0</strong></div></div></section>
+<nav aria-label="Huvudmeny"><button class="active" data-page="overview">Översikt</button><button data-page="patients">Patienter</button><button data-page="staff">Personal</button><button data-page="bookings">Bokningar</button><button data-page="emergency">Akuten</button></nav>
+<section id="patients" class="panel hidden"><h3>Patientregister</h3><p class="muted">Lägg till, sök, ändra och ta bort påhittade testpatienter.</p>
+<div class="toolbar"><input class="search" id="searchPatient" type="search" placeholder="Sök namn eller patientnummer"><button class="btn primary" id="addPatient">+ Ny patient</button></div>
+<div class="table-wrap"><table><thead><tr><th>Patientnummer</th><th>Namn</th><th>Födelsedatum</th><th>Telefon</th><th>Åtgärder</th></tr></thead><tbody id="patientRows"></tbody></table><div id="emptyPatients" class="empty">Inga patienter registrerade ännu.</div></div></section>
+<section id="patientFormPanel" class="panel hidden"><h3 id="formTitle">Registrera ny patient</h3>
+<form id="patientForm"><input type="hidden" id="patientId">
+<div class="field"><label for="patientName">För- och efternamn *</label><input id="patientName" required maxlength="100"></div>
+<div class="field"><label for="patientBirth">Födelsedatum</label><input id="patientBirth" type="date"></div>
+<div class="field"><label for="patientPhone">Telefon</label><input id="patientPhone" type="tel" maxlength="30"></div>
+<div class="field"><label for="patientNumber">Patientnummer</label><input id="patientNumber" maxlength="30" placeholder="Skapas automatiskt"></div>
+<div class="field full"><label for="patientNote">Testanteckning (endast låtsasuppgifter)</label><textarea id="patientNote" rows="3" maxlength="500" placeholder="Endast för demonstration"></textarea></div></form>
+<div class="actions"><button class="btn primary" id="savePatient" type="button">Spara patient</button><button class="btn" id="cancelPatient" type="button">Avbryt</button></div></section>
+<section id="staff" class="panel hidden"><h3>Personal</h3><p>Personalmodulen kommer i nästa utvecklingssteg.</p></section>
+<section id="bookings" class="panel hidden"><h3>Bokningar</h3><p>Bokningsmodulen kommer i nästa utvecklingssteg.</p></section>
+<section id="emergency" class="panel hidden"><h3>Akutmottagning</h3><p>Akutmodulen kommer i nästa utvecklingssteg.</p></section>
+</main><footer>SjukhusSystem Sverige © 2026</footer>
 <script>
-function showPanel(id,button){
-document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-button.classList.add('active');
-}
-function addPatient(){
-const field=document.getElementById('patient');
-if(!field.value.trim())return;
-const li=document.createElement('li');
-li.textContent=field.value;
-document.getElementById('patientList').appendChild(li);
-field.value='';
-}
-</script>
-</body>
-</html>
+const KEY="sjukhus_demo_patients_v1";let patients=[];try{patients=JSON.parse(localStorage.getItem(KEY)||"[]");if(!Array.isArray(patients))patients=[]}catch(e){patients=[]}
+const $=id=>document.getElementById(id);
+function saveData(){localStorage.setItem(KEY,JSON.stringify(patients))}
+function updateCount(){$("countPatients").textContent=patients.length}
+function showPage(page){["overview","patients","staff","bookings","emergency"].forEach(id=>$(id).classList.toggle("hidden",id!==page));$("patientFormPanel").classList.add("hidden");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page==="patients")renderPatients()}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function renderPatients(){const q=$("searchPatient").value.trim().toLocaleLowerCase("sv");const list=patients.filter(p=>(p.name+" "+p.number).toLocaleLowerCase("sv").includes(q));$("patientRows").innerHTML="";$("emptyPatients").classList.toggle("hidden",list.length>0);
+list.forEach(p=>{const tr=document.createElement("tr");[p.number,p.name,p.birth||"—",p.phone||"—"].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});const td=document.createElement("td");const edit=document.createElement("button");edit.className="btn small";edit.textContent="Ändra";edit.onclick=()=>openForm(p);const del=document.createElement("button");del.className="btn small danger";del.textContent="Ta bort";del.style.marginLeft="5px";del.onclick=()=>{if(confirm("Vill du ta bort testpatienten?")){patients=patients.filter(x=>x.id!==p.id);saveData();renderPatients()}};td.append(edit,del);tr.appendChild(td);$("patientRows").appendChild(tr)});updateCount()}
+function openForm(p){$("patientForm").reset();$("patientId").value=p?.id||"";$("formTitle").textContent=p?"Ändra patient":"Registrera ny patient";$("patientName").value=p?.name||"";$("patientBirth").value=p?.birth||"";$("patientPhone").value=p?.phone||"";$("patientNumber").value=p?.number||"";$("patientNote").value=p?.note||"";$("patientFormPanel").classList.remove("hidden");$("patientFormPanel").scrollIntoView({behavior:"smooth"})}
+$("addPatient").onclick=()=>openForm(null);$("cancelPatient").onclick=()=>$("patientFormPanel").classList.add("hidden");$("searchPatient").oninput=renderPatients;
+$("savePatient").onclick=()=>{const name=$("patientName").value.trim();if(!name){alert("Skriv patientens namn.");$("patientName").focus();return}const id=$("patientId").value||String(Date.now());const old=patients.find(p=>p.id===id);const number=$("patientNumber").value.trim()||old?.number||("TEST-"+String(Date.now()).slice(-6));const item={id,name,birth:$("patientBirth").value,phone:$("patientPhone").value.trim(),number,note:$("patientNote").value.trim()};if(old)patients=patients.map(p=>p.id===id?item:p);else patients.unshift(item);saveData();$("patientFormPanel").classList.add("hidden");$("searchPatient").value="";renderPatients();alert("Testpatienten har sparats på den här enheten.")};
+updateCount();
+</script></body></html>
