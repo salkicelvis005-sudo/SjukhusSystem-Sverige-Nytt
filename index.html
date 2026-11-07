@@ -1,786 +1,528 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#153f68">
 <title>SjukhusSystem Sverige</title>
-
 <style>
-:root {
- --navy:#153f68;
- --blue:#246da2;
- --bg:#f1f5fa;
- --ink:#203247;
- --muted:#68798b;
- --line:#dce5ee;
- --red:#b42318;
- --green:#16794b;
+:root{--navy:#153f68;--blue:#246da2;--bg:#f1f5fa;--ink:#203247;--muted:#68798b;--line:#dce5ee;--red:#b42318;--green:#16794b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--navy);color:#fff;padding:20px 18px}
+.header-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+header h1{font-size:25px;margin:0 0 7px}
+header p{margin:0;color:#d4e3f2}
+main{max-width:1100px;margin:auto;padding:22px 16px 38px}
+.notice{background:#fff8e6;border:1px solid #f1d48a;color:#72520b;padding:13px 15px;border-radius:12px;line-height:1.5;margin-bottom:20px;font-size:14px}
+h2{font-size:25px;margin:8px 0}
+.intro{color:var(--muted);margin:0 0 20px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.stat,.panel,.login-card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 16px #193b5b0b}
+.stat span{display:block;color:var(--muted)}
+.stat strong{display:block;font-size:30px;color:var(--blue);margin-top:8px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}
+button{font:inherit;cursor:pointer}
+nav button,.btn{border:0;border-radius:11px;padding:12px 16px;background:#dfeaf5;color:var(--navy);font-weight:700;font-size:15px}
+nav button.active,.btn.primary{background:var(--navy);color:#fff}
+.btn.danger{background:#fff0ef;color:var(--red)}
+.btn.small{padding:8px 11px;font-size:13px}
+.btn.light{background:#e8f0f7;color:var(--navy)}
+.panel h3{margin:0 0 14px;font-size:21px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.search{flex:1;min-width:180px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd7e3;border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid #8bbce2}
+table{width:100%;border-collapse:collapse;min-width:570px}
+th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:13px;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+.empty{text-align:center;color:var(--muted);padding:24px 10px}
+form.grid-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}
+.field.full{grid-column:1/-1}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.hidden{display:none!important}
+.muted{color:var(--muted);font-size:14px}
+footer{text-align:center;color:var(--muted);padding:20px}
+.login-wrap{min-height:70vh;display:grid;place-items:center}
+.login-card{width:min(100%,440px);padding:26px}
+.login-card h2{margin-top:0}
+.login-card .field{margin:14px 0}
+.user-tools{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px}
+.notice-small{color:var(--muted);font-size:13px;line-height:1.45}
+@media(max-width:760px){
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.header-inner{align-items:flex-start;flex-direction:column}
+.user-tools{width:100%;justify-content:space-between}
 }
-* {box-sizing:border-box}
-body {
- margin:0;
- font-family:Arial,Helvetica,sans-serif;
- background:var(--bg);
- color:var(--ink);
-}
-header {
- background:var(--navy);
- color:white;
- padding:24px 18px;
-}
-header h1 {font-size:25px;margin:0 0 8px}
-header p {margin:0;color:#d4e3f2}
-main {max-width:1100px;margin:auto;padding:22px 16px 40px}
-.notice {
- background:#fff8e6;
- border:1px solid #f1d48a;
- color:#72520b;
- padding:14px;
- border-radius:12px;
- line-height:1.5;
- margin-bottom:20px;
-}
-h2 {font-size:25px;margin:8px 0}
-.intro {color:var(--muted)}
-.stats {
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:12px;
- margin:20px 0;
-}
-.stat,.panel {
- background:white;
- border-radius:18px;
- padding:20px;
- box-shadow:0 4px 16px #193b5b0b;
-}
-.stat span {display:block;color:var(--muted)}
-.stat strong {
- display:block;
- font-size:30px;
- color:var(--blue);
- margin-top:8px;
-}
-nav {
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin:20px 0;
-}
-button {
- cursor:pointer;
- font:inherit;
-}
-nav button,.btn {
- border:0;
- border-radius:11px;
- padding:12px 16px;
- background:#dfeaf5;
- color:var(--navy);
- font-weight:bold;
- font-size:15px;
-}
-nav button.active,.btn.primary {
- background:var(--navy);
- color:white;
-}
-.btn.danger {background:#fff0ef;color:var(--red)}
-.btn.small {padding:8px 10px;font-size:13px}
-.panel {margin-bottom:18px}
-.panel h3 {margin:0 0 15px;font-size:21px}
-.toolbar {
- display:flex;
- gap:10px;
- flex-wrap:wrap;
- margin:15px 0;
-}
-.search {flex:1;min-width:180px}
-input,select,textarea {
- width:100%;
- padding:12px;
- border:1px solid #cbd7e3;
- border-radius:10px;
- font:inherit;
- background:white;
- color:var(--ink);
-}
-input:focus,select:focus,textarea:focus {
- outline:2px solid #8bbce2;
-}
-.field label {
- display:block;
- font-weight:bold;
- font-size:14px;
- margin-bottom:6px;
-}
-form {
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:14px;
-}
-.field.full {grid-column:1/-1}
-.actions {
- display:flex;
- gap:9px;
- flex-wrap:wrap;
- margin-top:16px;
-}
-.table-wrap {overflow-x:auto}
-table {width:100%;border-collapse:collapse}
-th,td {
- text-align:left;
- padding:12px 9px;
- border-bottom:1px solid var(--line);
- white-space:nowrap;
-}
-th {font-size:13px;color:var(--muted)}
-.empty {
- text-align:center;
- color:var(--muted);
- padding:24px 10px;
-}
-.hidden {display:none!important}
-.muted {color:var(--muted);font-size:14px}
-footer {
- text-align:center;
- color:var(--muted);
- padding:25px;
-}
-@media(max-width:560px) {
- header h1 {font-size:22px}
- main {padding:16px 12px 30px}
- .panel {padding:16px}
- form {grid-template-columns:1fr}
- .field.full {grid-column:auto}
- .stat {padding:15px}
- .stat strong {font-size:27px}
- th,td {padding:9px 7px;font-size:13px}
- nav button {padding:12px}
+@media(max-width:560px){
+header h1{font-size:22px}
+main{padding:17px 12px 30px}
+.panel{padding:16px}
+.login-card{padding:20px}
+form.grid-form{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.stat{padding:15px}
+.stat strong{font-size:27px}
+th,td{padding:10px 7px;font-size:13px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
- <h1>✚ SjukhusSystem Sverige</h1>
- <p>Digital vårdplattform</p>
+<div class="header-inner">
+<div>
+<h1>✚ SjukhusSystem Sverige</h1>
+<p>Digital vårdplattform – demoversion</p>
+</div>
+<div id="userTools" class="user-tools hidden">
+<span id="signedInAs"></span>
+<button class="btn light" id="logoutBtn">Logga ut</button>
+</div>
+</div>
 </header>
 
 <main>
-
 <div class="notice">
- <strong>Demoversion:</strong>
- Använd endast påhittade testuppgifter.
- Informationen sparas lokalt i webbläsaren.
- Detta är inte ett säkert journalsystem.
- Lägg aldrig in riktiga patientuppgifter.
+<strong>Viktig information:</strong>
+Detta är endast en lokal demonstration. Använd enbart påhittade testuppgifter. Uppgifter sparas i webbläsaren och inloggningen är inte säker. Använd aldrig riktiga patientuppgifter eller systemet för verklig vård.
 </div>
 
-<section id="overview">
- <h2>Välkommen!</h2>
- <p class="intro">Översikt över sjukhusets verksamhet.</p>
+<section id="loginView" class="login-wrap">
+<div class="login-card">
+<h2>Logga in</h2>
+<p class="muted">Logga in för att öppna demonstrationssystemet.</p>
+<div class="field">
+<label for="loginUser">Användarnamn</label>
+<input id="loginUser" autocomplete="username" placeholder="Användarnamn">
+</div>
+<div class="field">
+<label for="loginPass">Lösenord</label>
+<input id="loginPass" type="password" autocomplete="current-password" placeholder="Lösenord">
+</div>
+<button class="btn primary" id="loginBtn" style="width:100%">Logga in</button>
+<p id="loginError" class="muted" role="alert"></p>
+<hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+<p class="notice-small">
+<strong>Första testinloggningen</strong><br>
+Användarnamn: <b>admin</b><br>
+Lösenord: <b>admin123</b>
+</p>
+</div>
+</section>
 
- <div class="stats">
-  <div class="stat"><span>Patienter</span><strong id="countPatients">0</strong></div>
-  <div class="stat"><span>Personal</span><strong id="countStaff">0</strong></div>
-  <div class="stat"><span>Bokningar</span><strong id="countBookings">0</strong></div>
-  <div class="stat"><span>Akutärenden</span><strong id="countEmergency">0</strong></div>
- </div>
+<div id="appView" class="hidden">
+<section id="overview">
+<h2>Välkommen!</h2>
+<p class="intro">Översikt över sjukhusets verksamhet.</p>
+<div class="stats">
+<div class="stat"><span>Patienter</span><strong id="countPatients">0</strong></div>
+<div class="stat"><span>Personal</span><strong id="countStaff">1</strong></div>
+<div class="stat"><span>Bokningar idag</span><strong id="countBookings">0</strong></div>
+<div class="stat"><span>Akutärenden</span><strong id="countEmergency">0</strong></div>
+</div>
 </section>
 
 <nav aria-label="Huvudmeny">
- <button class="active" data-page="overview">Översikt</button>
- <button data-page="patients">Patienter</button>
- <button data-page="staff">Personal</button>
- <button data-page="bookings">Bokningar</button>
- <button data-page="emergency">Akuten</button>
+<button class="active" data-page="overview">Översikt</button>
+<button data-page="patients">Patienter</button>
+<button data-page="staff">Personal</button>
+<button data-page="bookings">Bokningar</button>
+<button data-page="emergency">Akuten</button>
 </nav>
 
-<!-- PATIENTER -->
-
 <section id="patients" class="panel hidden">
- <h3>Patientregister</h3>
- <p class="muted">Registrera och hantera testpatienter.</p>
-
- <div class="toolbar">
-  <input class="search" id="searchPatient" placeholder="Sök patient...">
-  <button class="btn primary" id="addPatient">+ Ny patient</button>
- </div>
-
- <div class="table-wrap">
-  <table>
-   <thead>
-    <tr>
-     <th>Patientnummer</th>
-     <th>Namn</th>
-     <th>Födelsedatum</th>
-     <th>Telefon</th>
-     <th>Åtgärder</th>
-    </tr>
-   </thead>
-   <tbody id="patientRows"></tbody>
-  </table>
-  <div id="emptyPatients" class="empty">Inga patienter registrerade.</div>
- </div>
+<h3>Patientregister</h3>
+<p class="muted">Lägg till, sök, ändra och ta bort påhittade testpatienter.</p>
+<div class="toolbar">
+<input class="search" id="searchPatient" type="search" placeholder="Sök namn eller patientnummer">
+<button class="btn primary" id="addPatient">+ Ny patient</button>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Patientnummer</th><th>Namn</th><th>Födelsedatum</th><th>Telefon</th><th>Åtgärder</th></tr></thead>
+<tbody id="patientRows"></tbody>
+</table>
+<div id="emptyPatients" class="empty">Inga patienter registrerade ännu.</div>
+</div>
 </section>
 
 <section id="patientFormPanel" class="panel hidden">
- <h3 id="patientFormTitle">Registrera ny patient</h3>
-
- <form id="patientForm">
-  <input type="hidden" id="patientId">
-
-  <div class="field">
-   <label>För- och efternamn *</label>
-   <input id="patientName" required maxlength="100">
-  </div>
-
-  <div class="field">
-   <label>Födelsedatum</label>
-   <input id="patientBirth" type="date">
-  </div>
-
-  <div class="field">
-   <label>Telefon</label>
-   <input id="patientPhone" type="tel">
-  </div>
-
-  <div class="field">
-   <label>Patientnummer</label>
-   <input id="patientNumber" placeholder="Skapas automatiskt">
-  </div>
-
-  <div class="field full">
-   <label>Testanteckning</label>
-   <textarea id="patientNote" rows="3"></textarea>
-  </div>
- </form>
-
- <div class="actions">
-  <button class="btn primary" id="savePatient" type="button">Spara patient</button>
-  <button class="btn" id="cancelPatient" type="button">Avbryt</button>
- </div>
+<h3 id="patientFormTitle">Registrera ny patient</h3>
+<form id="patientForm" class="grid-form">
+<input type="hidden" id="patientId">
+<div class="field">
+<label for="patientName">För- och efternamn *</label>
+<input id="patientName" required maxlength="100">
+</div>
+<div class="field">
+<label for="patientBirth">Födelsedatum</label>
+<input id="patientBirth" type="date">
+</div>
+<div class="field">
+<label for="patientPhone">Telefon</label>
+<input id="patientPhone" type="tel" maxlength="30">
+</div>
+<div class="field">
+<label for="patientNumber">Patientnummer</label>
+<input id="patientNumber" maxlength="30" placeholder="Skapas automatiskt">
+</div>
+<div class="field full">
+<label for="patientNote">Testanteckning</label>
+<textarea id="patientNote" rows="3" maxlength="500" placeholder="Endast påhittade uppgifter"></textarea>
+</div>
+</form>
+<div class="actions">
+<button class="btn primary" id="savePatient" type="button">Spara patient</button>
+<button class="btn" id="cancelPatient" type="button">Avbryt</button>
+</div>
 </section>
 
-<!-- PERSONAL -->
-
 <section id="staff" class="panel hidden">
- <h3>Personalregister</h3>
- <p class="muted">Registrera läkare, sjuksköterskor och annan testpersonal.</p>
-
- <div class="toolbar">
-  <input class="search" id="searchStaff" placeholder="Sök personal...">
-  <button class="btn primary" id="addStaff">+ Ny personal</button>
- </div>
-
- <div class="table-wrap">
-  <table>
-   <thead>
-    <tr>
-     <th>Namn</th>
-     <th>Yrkesroll</th>
-     <th>Avdelning</th>
-     <th>Telefon</th>
-     <th>Åtgärder</th>
-    </tr>
-   </thead>
-   <tbody id="staffRows"></tbody>
-  </table>
-  <div id="emptyStaff" class="empty">Ingen personal registrerad.</div>
- </div>
+<h3>Personalregister</h3>
+<p class="muted">Skapa och hantera testkonton för läkare, sjuksköterskor och reception.</p>
+<div class="toolbar">
+<input class="search" id="searchStaff" type="search" placeholder="Sök namn eller användarnamn">
+<button class="btn primary" id="addStaff">+ Lägg till personal</button>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Namn</th><th>Användarnamn</th><th>Roll</th><th>Åtgärder</th></tr></thead>
+<tbody id="staffRows"></tbody>
+</table>
+<div id="emptyStaff" class="empty">Ingen personal registrerad ännu.</div>
+</div>
 </section>
 
 <section id="staffFormPanel" class="panel hidden">
- <h3 id="staffFormTitle">Registrera personal</h3>
-
- <form id="staffForm">
-  <input type="hidden" id="staffId">
-
-  <div class="field">
-   <label>För- och efternamn *</label>
-   <input id="staffName" required maxlength="100">
-  </div>
-
-  <div class="field">
-   <label>Yrkesroll *</label>
-   <select id="staffRole" required>
-    <option value="">Välj yrkesroll</option>
-    <option>Läkare</option>
-    <option>Sjuksköterska</option>
-    <option>Undersköterska</option>
-    <option>Administratör</option>
-    <option>Ambulanspersonal</option>
-    <option>Receptionist</option>
-    <option>Övrig personal</option>
-   </select>
-  </div>
-
-  <div class="field">
-   <label>Avdelning</label>
-   <select id="staffDepartment">
-    <option>Akutmottagning</option>
-    <option>Kirurgi</option>
-    <option>Medicin</option>
-    <option>Barnavdelning</option>
-    <option>Intensivvård</option>
-    <option>Röntgen</option>
-    <option>Laboratorium</option>
-    <option>Administration</option>
-    <option>Övrigt</option>
-   </select>
-  </div>
-
-  <div class="field">
-   <label>Telefon</label>
-   <input id="staffPhone" type="tel">
-  </div>
-
-  <div class="field full">
-   <label>E-post</label>
-   <input id="staffEmail" type="email">
-  </div>
- </form>
-
- <div class="actions">
-  <button class="btn primary" id="saveStaff" type="button">Spara personal</button>
-  <button class="btn" id="cancelStaff" type="button">Avbryt</button>
- </div>
+<h3 id="staffFormTitle">Lägg till personal</h3>
+<form id="staffForm" class="grid-form">
+<input type="hidden" id="staffId">
+<div class="field">
+<label for="staffName">Namn *</label>
+<input id="staffName" required maxlength="100">
+</div>
+<div class="field">
+<label for="staffUsername">Användarnamn *</label>
+<input id="staffUsername" required maxlength="40" autocomplete="off">
+</div>
+<div class="field">
+<label for="staffRole">Yrkesroll</label>
+<select id="staffRole">
+<option>Läkare</option>
+<option>Sjuksköterska</option>
+<option>Reception</option>
+<option>Administratör</option>
+</select>
+</div>
+<div class="field">
+<label for="staffPassword">Testlösenord *</label>
+<input id="staffPassword" type="text" required minlength="4" maxlength="60" autocomplete="off">
+</div>
+</form>
+<p class="notice-small">Detta är endast testkonton. Lösenorden sparas oskyddat i webbläsaren och får aldrig användas i ett riktigt system.</p>
+<div class="actions">
+<button class="btn primary" id="saveStaff" type="button">Spara personal</button>
+<button class="btn" id="cancelStaff" type="button">Avbryt</button>
+</div>
 </section>
-
-<!-- BOKNINGAR -->
 
 <section id="bookings" class="panel hidden">
- <h3>Bokningar</h3>
- <p class="muted">Skapa och hantera testbokningar.</p>
-
- <form id="bookingForm">
-  <div class="field">
-   <label>Patient *</label>
-   <select id="bookingPatient" required></select>
-  </div>
-
-  <div class="field">
-   <label>Läkare eller personal *</label>
-   <select id="bookingStaff" required></select>
-  </div>
-
-  <div class="field">
-   <label>Datum *</label>
-   <input id="bookingDate" type="date" required>
-  </div>
-
-  <div class="field">
-   <label>Tid *</label>
-   <input id="bookingTime" type="time" required>
-  </div>
-
-  <div class="field full">
-   <label>Besöksorsak</label>
-   <input id="bookingReason" maxlength="200">
-  </div>
- </form>
-
- <div class="actions">
-  <button class="btn primary" id="saveBooking">Skapa bokning</button>
- </div>
-
- <h3 style="margin-top:25px">Bokningslista</h3>
- <div class="table-wrap">
-  <table>
-   <thead>
-    <tr>
-     <th>Patient</th>
-     <th>Personal</th>
-     <th>Datum</th>
-     <th>Tid</th>
-     <th>Åtgärder</th>
-    </tr>
-   </thead>
-   <tbody id="bookingRows"></tbody>
-  </table>
-  <div id="emptyBookings" class="empty">Inga bokningar ännu.</div>
- </div>
+<h3>Bokningar</h3>
+<p>Bokningsmodulen kommer i nästa utvecklingssteg.</p>
 </section>
-
-<!-- AKUTEN -->
 
 <section id="emergency" class="panel hidden">
- <h3>Akutmottagning</h3>
- <p class="muted">Registrera fiktiva akutärenden för demonstration.</p>
-
- <form id="emergencyForm">
-  <div class="field">
-   <label>Patientens namn *</label>
-   <input id="emergencyName" required maxlength="100">
-  </div>
-
-  <div class="field">
-   <label>Prioritet *</label>
-   <select id="emergencyPriority" required>
-    <option value="">Välj prioritet</option>
-    <option>Röd - Omedelbar</option>
-    <option>Orange - Mycket brådskande</option>
-    <option>Gul - Brådskande</option>
-    <option>Grön - Mindre brådskande</option>
-    <option>Blå - Ej brådskande</option>
-   </select>
-  </div>
-
-  <div class="field full">
-   <label>Beskrivning av testärendet</label>
-   <textarea id="emergencyDescription" rows="3"></textarea>
-  </div>
- </form>
-
- <div class="actions">
-  <button class="btn primary" id="saveEmergency">Registrera akutärende</button>
- </div>
-
- <h3 style="margin-top:25px">Registrerade ärenden</h3>
- <div class="table-wrap">
-  <table>
-   <thead>
-    <tr>
-     <th>Patient</th>
-     <th>Prioritet</th>
-     <th>Beskrivning</th>
-     <th>Åtgärder</th>
-    </tr>
-   </thead>
-   <tbody id="emergencyRows"></tbody>
-  </table>
-  <div id="emptyEmergency" class="empty">Inga akutärenden registrerade.</div>
- </div>
+<h3>Akutmottagning</h3>
+<p>Akutmodulen kommer i nästa utvecklingssteg. Detta är inte ett verktyg för medicinsk prioritering.</p>
 </section>
-
+</div>
 </main>
 
 <footer>SjukhusSystem Sverige © 2026</footer>
 
 <script>
-const KEYS = {
- patients:"sjukhus_demo_patients_v1",
- staff:"sjukhus_demo_staff_v1",
- bookings:"sjukhus_demo_bookings_v1",
- emergency:"sjukhus_demo_emergency_v1"
-};
-
-function load(key) {
- try {
-  const data=JSON.parse(localStorage.getItem(key)||"[]");
-  return Array.isArray(data)?data:[];
- } catch(e) {return [];}
-}
-
-let patients=load(KEYS.patients);
-let staff=load(KEYS.staff);
-let bookings=load(KEYS.bookings);
-let emergency=load(KEYS.emergency);
-
+"use strict";
+const PATIENT_KEY="sjukhus_demo_patients_v1";
+const STAFF_KEY="sjukhus_demo_staff_v1";
+const SESSION_KEY="sjukhus_demo_session_v1";
 const $=id=>document.getElementById(id);
 
-function saveAll() {
- localStorage.setItem(KEYS.patients,JSON.stringify(patients));
- localStorage.setItem(KEYS.staff,JSON.stringify(staff));
- localStorage.setItem(KEYS.bookings,JSON.stringify(bookings));
- localStorage.setItem(KEYS.emergency,JSON.stringify(emergency));
- updateCounts();
+function readArray(key){
+try{
+const v=JSON.parse(localStorage.getItem(key)||"[]");
+return Array.isArray(v)?v:[];
+}catch(e){return[]}
 }
 
-function updateCounts() {
- $("countPatients").textContent=patients.length;
- $("countStaff").textContent=staff.length;
- $("countBookings").textContent=bookings.length;
- $("countEmergency").textContent=emergency.length;
+let patients=readArray(PATIENT_KEY);
+let staff=readArray(STAFF_KEY);
+
+if(!staff.some(s=>s.username==="admin")){
+staff.unshift({
+id:"admin-account",
+name:"Systemadministratör",
+username:"admin",
+role:"Administratör",
+password:"admin123"
+});
+localStorage.setItem(STAFF_KEY,JSON.stringify(staff));
 }
 
-function showPage(page) {
- ["overview","patients","staff","bookings","emergency"].forEach(id=>{
-  $(id).classList.toggle("hidden",id!==page);
- });
- ["patientFormPanel","staffFormPanel"].forEach(id=>{
-  $(id).classList.add("hidden");
- });
- document.querySelectorAll("nav button").forEach(b=>{
-  b.classList.toggle("active",b.dataset.page===page);
- });
- if(page==="patients") renderPatients();
- if(page==="staff") renderStaff();
- if(page==="bookings") renderBookings();
- if(page==="emergency") renderEmergency();
+let currentUser=null;
+
+function savePatients(){
+localStorage.setItem(PATIENT_KEY,JSON.stringify(patients));
+}
+
+function saveStaff(){
+localStorage.setItem(STAFF_KEY,JSON.stringify(staff));
+}
+
+function updateCounts(){
+$("countPatients").textContent=patients.length;
+$("countStaff").textContent=staff.length;
+$("countBookings").textContent="0";
+$("countEmergency").textContent="0";
+}
+
+function showLogin(){
+currentUser=null;
+$("loginView").classList.remove("hidden");
+$("appView").classList.add("hidden");
+$("userTools").classList.add("hidden");
+}
+
+function showApp(user){
+currentUser=user;
+$("loginView").classList.add("hidden");
+$("appView").classList.remove("hidden");
+$("userTools").classList.remove("hidden");
+$("signedInAs").textContent=user.name+" · "+user.role;
+$("loginError").textContent="";
+updateCounts();
+showPage("overview");
+}
+
+function login(){
+const username=$("loginUser").value.trim().toLowerCase();
+const password=$("loginPass").value;
+const user=staff.find(s=>s.username.toLowerCase()===username&&s.password===password);
+if(!user){
+$("loginError").textContent="Fel användarnamn eller lösenord.";
+return;
+}
+localStorage.setItem(SESSION_KEY,user.id);
+showApp(user);
+}
+
+$("loginBtn").addEventListener("click",login);
+$("loginPass").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+$("loginUser").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+$("logoutBtn").addEventListener("click",()=>{
+localStorage.removeItem(SESSION_KEY);
+showLogin();
+});
+
+function showPage(page){
+["overview","patients","staff","bookings","emergency"].forEach(id=>{
+$(id).classList.toggle("hidden",id!==page);
+});
+$("patientFormPanel").classList.add("hidden");
+$("staffFormPanel").classList.add("hidden");
+document.querySelectorAll("nav button").forEach(b=>{
+b.classList.toggle("active",b.dataset.page===page);
+});
+if(page==="patients")renderPatients();
+if(page==="staff")renderStaff();
 }
 
 document.querySelectorAll("nav button").forEach(b=>{
- b.addEventListener("click",()=>showPage(b.dataset.page));
+b.addEventListener("click",()=>showPage(b.dataset.page));
 });
 
-function makeCell(tr,value) {
- const td=document.createElement("td");
- td.textContent=value||"—";
- tr.appendChild(td);
- return td;
+function renderPatients(){
+const q=$("searchPatient").value.trim().toLocaleLowerCase("sv");
+const list=patients.filter(p=>(p.name+" "+p.number).toLocaleLowerCase("sv").includes(q));
+$("patientRows").innerHTML="";
+$("emptyPatients").classList.toggle("hidden",list.length>0);
+
+list.forEach(p=>{
+const tr=document.createElement("tr");
+[p.number,p.name,p.birth||"—",p.phone||"—"].forEach(v=>{
+const td=document.createElement("td");
+td.textContent=v;
+tr.appendChild(td);
+});
+const td=document.createElement("td");
+const edit=document.createElement("button");
+edit.className="btn small";
+edit.textContent="Ändra";
+edit.onclick=()=>openPatientForm(p);
+
+const del=document.createElement("button");
+del.className="btn small danger";
+del.textContent="Ta bort";
+del.style.marginLeft="5px";
+del.onclick=()=>{
+if(confirm("Vill du ta bort testpatienten?")){
+patients=patients.filter(x=>x.id!==p.id);
+savePatients();
+renderPatients();
+updateCounts();
+}
+};
+td.append(edit,del);
+tr.appendChild(td);
+$("patientRows").appendChild(tr);
+});
+updateCounts();
 }
 
-function makeButton(label,cls,callback) {
- const b=document.createElement("button");
- b.className="btn small "+(cls||"");
- b.textContent=label;
- b.onclick=callback;
- return b;
+function openPatientForm(p){
+$("patientForm").reset();
+$("patientId").value=p?.id||"";
+$("patientFormTitle").textContent=p?"Ändra patient":"Registrera ny patient";
+$("patientName").value=p?.name||"";
+$("patientBirth").value=p?.birth||"";
+$("patientPhone").value=p?.phone||"";
+$("patientNumber").value=p?.number||"";
+$("patientNote").value=p?.note||"";
+$("patientFormPanel").classList.remove("hidden");
+$("patientFormPanel").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-// PATIENTER
-
-function renderPatients() {
- const q=$("searchPatient").value.trim().toLocaleLowerCase("sv");
- const list=patients.filter(p=>
-  (p.name+" "+p.number).toLocaleLowerCase("sv").includes(q)
- );
- $("patientRows").innerHTML="";
- $("emptyPatients").classList.toggle("hidden",list.length>0);
-
- list.forEach(p=>{
-  const tr=document.createElement("tr");
-  [p.number,p.name,p.birth,p.phone].forEach(v=>makeCell(tr,v));
-
-  const td=makeCell(tr,"");
-  td.appendChild(makeButton("Ändra","",()=>openPatient(p)));
-  td.appendChild(makeButton("Ta bort","danger",()=>{
-   if(confirm("Vill du ta bort testpatienten?")) {
-    patients=patients.filter(x=>x.id!==p.id);
-    saveAll();renderPatients();
-   }
-  }));
-  $("patientRows").appendChild(tr);
- });
- updateCounts();
-}
-
-function openPatient(p=null) {
- $("patientForm").reset();
- $("patientId").value=p?.id||"";
- $("patientFormTitle").textContent=p?"Ändra patient":"Registrera ny patient";
- $("patientName").value=p?.name||"";
- $("patientBirth").value=p?.birth||"";
- $("patientPhone").value=p?.phone||"";
- $("patientNumber").value=p?.number||"";
- $("patientNote").value=p?.note||"";
- $("patientFormPanel").classList.remove("hidden");
- $("patientFormPanel").scrollIntoView({behavior:"smooth"});
-}
-
-$("addPatient").onclick=()=>openPatient();
+$("addPatient").onclick=()=>openPatientForm(null);
 $("cancelPatient").onclick=()=>$("patientFormPanel").classList.add("hidden");
 $("searchPatient").oninput=renderPatients;
 
 $("savePatient").onclick=()=>{
- const name=$("patientName").value.trim();
- if(!name){alert("Skriv patientens namn.");return;}
-
- const id=$("patientId").value||String(Date.now());
- const old=patients.find(p=>p.id===id);
- const item={
-  id,name,
-  birth:$("patientBirth").value,
-  phone:$("patientPhone").value.trim(),
-  number:$("patientNumber").value.trim()||old?.number||("TEST-"+String(Date.now()).slice(-6)),
-  note:$("patientNote").value.trim()
- };
-
- if(old) patients=patients.map(p=>p.id===id?item:p);
- else patients.unshift(item);
-
- saveAll();
- $("patientFormPanel").classList.add("hidden");
- $("patientForm").reset();
- renderPatients();
- alert("Testpatienten har sparats.");
+const name=$("patientName").value.trim();
+if(!name){
+alert("Skriv patientens namn.");
+$("patientName").focus();
+return;
+}
+const id=$("patientId").value||String(Date.now());
+const old=patients.find(p=>p.id===id);
+const number=$("patientNumber").value.trim()||old?.number||("TEST-"+String(Date.now()).slice(-6));
+const item={
+id,name,
+birth:$("patientBirth").value,
+phone:$("patientPhone").value.trim(),
+number,
+note:$("patientNote").value.trim()
+};
+if(old)patients=patients.map(p=>p.id===id?item:p);
+else patients.unshift(item);
+savePatients();
+$("patientFormPanel").classList.add("hidden");
+$("searchPatient").value="";
+renderPatients();
+alert("Testpatienten har sparats på den här enheten.");
 };
 
-// PERSONAL
+function renderStaff(){
+const q=$("searchStaff").value.trim().toLocaleLowerCase("sv");
+const list=staff.filter(s=>(s.name+" "+s.username+" "+s.role).toLocaleLowerCase("sv").includes(q));
+$("staffRows").innerHTML="";
+$("emptyStaff").classList.toggle("hidden",list.length>0);
 
-function renderStaff() {
- const q=$("searchStaff").value.trim().toLocaleLowerCase("sv");
- const list=staff.filter(s=>
-  (s.name+" "+s.role+" "+s.department).toLocaleLowerCase("sv").includes(q)
- );
+list.forEach(s=>{
+const tr=document.createElement("tr");
+[s.name,s.username,s.role].forEach(v=>{
+const td=document.createElement("td");
+td.textContent=v;
+tr.appendChild(td);
+});
+const td=document.createElement("td");
+const edit=document.createElement("button");
+edit.className="btn small";
+edit.textContent="Ändra";
+edit.onclick=()=>openStaffForm(s);
+td.appendChild(edit);
 
- $("staffRows").innerHTML="";
- $("emptyStaff").classList.toggle("hidden",list.length>0);
-
- list.forEach(s=>{
-  const tr=document.createElement("tr");
-  [s.name,s.role,s.department,s.phone].forEach(v=>makeCell(tr,v));
-  const td=makeCell(tr,"");
-
-  td.appendChild(makeButton("Ändra","",()=>openStaff(s)));
-  td.appendChild(makeButton("Ta bort","danger",()=>{
-   if(confirm("Vill du ta bort personalen?")) {
-    staff=staff.filter(x=>x.id!==s.id);
-    saveAll();renderStaff();
-   }
-  }));
-  $("staffRows").appendChild(tr);
- });
- updateCounts();
+if(s.username!=="admin"){
+const del=document.createElement("button");
+del.className="btn small danger";
+del.textContent="Ta bort";
+del.style.marginLeft="5px";
+del.onclick=()=>{
+if(confirm("Vill du ta bort testkontot?")){
+staff=staff.filter(x=>x.id!==s.id);
+saveStaff();
+renderStaff();
+updateCounts();
+}
+};
+td.appendChild(del);
+}
+tr.appendChild(td);
+$("staffRows").appendChild(tr);
+});
+updateCounts();
 }
 
-function openStaff(s=null) {
- $("staffForm").reset();
- $("staffId").value=s?.id||"";
- $("staffFormTitle").textContent=s?"Ändra personal":"Registrera personal";
- $("staffName").value=s?.name||"";
- $("staffRole").value=s?.role||"";
- $("staffDepartment").value=s?.department||"Akutmottagning";
- $("staffPhone").value=s?.phone||"";
- $("staffEmail").value=s?.email||"";
- $("staffFormPanel").classList.remove("hidden");
- $("staffFormPanel").scrollIntoView({behavior:"smooth"});
+function openStaffForm(s){
+$("staffForm").reset();
+$("staffId").value=s?.id||"";
+$("staffFormTitle").textContent=s?"Ändra personal":"Lägg till personal";
+$("staffName").value=s?.name||"";
+$("staffUsername").value=s?.username||"";
+$("staffUsername").disabled=!!s;
+$("staffRole").value=s?.role||"Läkare";
+$("staffPassword").value=s?.password||"";
+$("staffFormPanel").classList.remove("hidden");
+$("staffFormPanel").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-$("addStaff").onclick=()=>openStaff();
-$("cancelStaff").onclick=()=>$("staffFormPanel").classList.add("hidden");
+$("addStaff").onclick=()=>openStaffForm(null);
+$("cancelStaff").onclick=()=>{
+$("staffFormPanel").classList.add("hidden");
+$("staffUsername").disabled=false;
+};
 $("searchStaff").oninput=renderStaff;
 
 $("saveStaff").onclick=()=>{
- const name=$("staffName").value.trim();
- const role=$("staffRole").value;
+const name=$("staffName").value.trim();
+const username=$("staffUsername").value.trim().toLowerCase();
+const role=$("staffRole").value;
+const password=$("staffPassword").value;
+const id=$("staffId").value||String(Date.now());
 
- if(!name||!role){alert("Fyll i namn och yrkesroll.");return;}
-
- const id=$("staffId").value||String(Date.now());
- const old=staff.find(s=>s.id===id);
-
- const item={
-  id,name,role,
-  department:$("staffDepartment").value,
-  phone:$("staffPhone").value.trim(),
-  email:$("staffEmail").value.trim()
- };
-
- if(old) staff=staff.map(s=>s.id===id?item:s);
- else staff.unshift(item);
-
- saveAll();
- $("staffFormPanel").classList.add("hidden");
- renderStaff();
- alert("Personal har sparats.");
-};
-
-// BOKNINGAR
-
-function updateBookingOptions() {
- const patientSelect=$("bookingPatient");
- const staffSelect=$("bookingStaff");
-
- patientSelect.innerHTML='<option value="">Välj patient</option>';
- staffSelect.innerHTML='<option value="">Välj personal</option>';
-
- patients.forEach(p=>{
-  const o=document.createElement("option");
-  o.value=p.id;o.textContent=p.name;
-  patientSelect.appendChild(o);
- });
-
- staff.forEach(s=>{
-  const o=document.createElement("option");
-  o.value=s.id;o.textContent=s.name+" ("+s.role+")";
-  staffSelect.appendChild(o);
- });
+if(!name||!username||password.length<4){
+alert("Fyll i namn, användarnamn och ett testlösenord på minst fyra tecken.");
+return;
 }
 
-function renderBookings() {
- updateBookingOptions();
- $("bookingRows").innerHTML="";
- $("emptyBookings").classList.toggle("hidden",bookings.length>0);
-
- bookings.forEach(b=>{
-  const tr=document.createElement("tr");
-  [
-   patients.find(p=>p.id===b.patientId)?.name||"Borttagen patient",
-   staff.find(s=>s.id===b.staffId)?.name||"Borttagen personal",
-   b.date,b.time
-  ].forEach(v=>makeCell(tr,v));
-
-  const td=makeCell(tr,"");
-  td.appendChild(makeButton("Ta bort","danger",()=>{
-   if(confirm("Ta bort bokningen?")) {
-    bookings=bookings.filter(x=>x.id!==b.id);
-    saveAll();renderBookings();
-   }
-  }));
-  $("bookingRows").appendChild(tr);
- });
+const duplicate=staff.some(s=>s.username===username&&s.id!==id);
+if(duplicate){
+alert("Användarnamnet finns redan. Välj ett annat.");
+return;
 }
 
-$("saveBooking").onclick=()=>{
- const patientId=$("bookingPatient").value;
- const staffId=$("bookingStaff").value;
- const date=$("bookingDate").value;
- const time=$("bookingTime").value;
+const old=staff.find(s=>s.id===id);
+const item={id,name,username:old?old.username:username,role,password};
 
- if(!patientId||!staffId||!date||!time) {
-  alert("Fyll i patient, personal, datum och tid.");
-  return;
- }
+if(old)staff=staff.map(s=>s.id===id?item:s);
+else staff.push(item);
 
- bookings.push({
-  id:String(Date.now()),
-  patientId,staffId,date,time,
-  reason:$("bookingReason").value.trim()
- });
-
- saveAll();
- $("bookingForm").reset();
- renderBookings();
- alert("Testbokningen har sparats.");
-};
-
-// AKUTEN
-
-function renderEmergency() {
- $("emergencyRows").innerHTML="";
- $("emptyEmergency").classList.toggle("hidden",emergency.length>0);
-
- emergency.forEach(e=>{
-  const tr=document.createElement("tr");
-  [e.name,e.priority,e.description].forEach(v=>makeCell(tr,v));
-
-  const td=makeCell(tr,"");
-  td.appendChild(makeButton("Ta bort","danger",()=>{
-   if(confirm("Ta bort akutärendet?")) {
-    emergency=emergency.filter(x=>x.id!==e.id);
-    saveAll();renderEmergency();
-   }
-  }));
-  $("emergencyRows").appendChild(tr);
- });
-}
-
-$("saveEmergency").onclick=()=>{
- const name=$("emergencyName").value.trim();
- const priority=$("emergencyPriority").value;
-
- if(!name||!priority) {
-  alert("Fyll i namn och prioritet.");
-  return;
- }
-
- emergency.unshift({
-  id:String(Date.now()),
-  name,priority,
-  description:$("emergencyDescription").value.trim()
- });
-
- saveAll();
- $("emergencyForm").reset();
- renderEmergency();
- alert("Testärendet har registrerats.");
+saveStaff();
+$("staffFormPanel").classList.add("hidden");
+$("staffUsername").disabled=false;
+renderStaff();
+alert("Testkontot har sparats.");
 };
 
 updateCounts();
+
+const savedSession=localStorage.getItem(SESSION_KEY);
+const savedUser=staff.find(s=>s.id===savedSession);
+
+if(savedUser)showApp(savedUser);
+else showLogin();
 </script>
 </body>
-      </html>
+</html>
