@@ -1,55 +1,760 @@
+
 <!doctype html>
 <html lang="sv">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#153f68"><title>SjukhusSystem Sverige</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#153f68">
+<title>SjukhusSystem Sverige</title>
+
 <style>
-:root{--navy:#153f68;--blue:#246da2;--bg:#f1f5fa;--ink:#203247;--muted:#68798b;--line:#dce5ee;--red:#b42318}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:var(--navy);color:white;padding:22px 18px}header h1{font-size:25px;margin:0 0 7px}header p{margin:0;color:#d4e3f2}
-main{max-width:1050px;margin:auto;padding:22px 16px 40px}.notice{background:#fff8e6;border:1px solid #f1d48a;color:#72520b;padding:13px 15px;border-radius:12px;line-height:1.45;margin-bottom:20px;font-size:14px}
-h2{font-size:25px;margin:8px 0}.intro{color:var(--muted);margin:0 0 20px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
-.stat,.panel{background:white;border-radius:18px;padding:20px;box-shadow:0 4px 16px #193b5b0b}.stat span{display:block;color:var(--muted)}.stat strong{display:block;font-size:30px;color:var(--blue);margin-top:8px}
-nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}nav button,.btn{border:0;border-radius:11px;padding:12px 16px;background:#dfeaf5;color:var(--navy);font-weight:700;font-size:15px;cursor:pointer}nav button.active,.btn.primary{background:var(--navy);color:white}.btn.danger{background:#fff0ef;color:var(--red)}.btn.small{padding:8px 11px;font-size:13px}
-.panel h3{margin:0 0 16px;font-size:21px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.search{flex:1;min-width:180px}
-input,textarea{width:100%;padding:12px;border:1px solid #cbd7e3;border-radius:10px;font:inherit;background:white;color:var(--ink)}input:focus,textarea:focus{outline:2px solid #8bbce2}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}th{font-size:13px;color:var(--muted)}.table-wrap{overflow-x:auto}.empty{text-align:center;color:var(--muted);padding:24px 10px}
-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}.field.full{grid-column:1/-1}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.hidden{display:none!important}.muted{color:var(--muted);font-size:14px}footer{text-align:center;color:var(--muted);padding:20px}
-@media(max-width:560px){header h1{font-size:22px}main{padding:17px 12px 30px}.panel{padding:16px}form{grid-template-columns:1fr}.field.full{grid-column:auto}.stat{padding:15px}.stat strong{font-size:27px}th,td{padding:10px 7px;font-size:13px}}
-</style></head>
+:root{
+  --navy:#153f68;
+  --blue:#246da2;
+  --bg:#f1f5fa;
+  --ink:#203247;
+  --muted:#68798b;
+  --line:#dce5ee;
+  --red:#b42318;
+  --green:#16804a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+header{
+  background:var(--navy);
+  color:white;
+  padding:23px 18px;
+}
+header h1{font-size:25px;margin:0 0 7px}
+header p{margin:0;color:#d4e3f2}
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:22px 16px 40px;
+}
+.notice{
+  background:#fff8e6;
+  border:1px solid #f1d48a;
+  color:#72520b;
+  padding:14px;
+  border-radius:13px;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+h2{font-size:25px;margin:8px 0}
+.intro{color:var(--muted);margin-bottom:20px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.stat,.panel{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 4px 16px #193b5b0b;
+}
+.stat span{display:block;color:var(--muted)}
+.stat strong{
+  display:block;
+  font-size:30px;
+  color:var(--blue);
+  margin-top:8px;
+}
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:18px 0 20px;
+}
+button{
+  cursor:pointer;
+  font-family:inherit;
+}
+nav button,.btn{
+  border:0;
+  border-radius:11px;
+  padding:12px 16px;
+  background:#dfeaf5;
+  color:var(--navy);
+  font-weight:700;
+  font-size:15px;
+}
+nav button.active,.btn.primary{
+  background:var(--navy);
+  color:white;
+}
+.btn.danger{background:#fff0ef;color:var(--red)}
+.btn.green{background:var(--green);color:white}
+.btn.small{padding:8px 11px;font-size:13px}
+.panel h3{margin:0 0 16px;font-size:21px}
+.toolbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+.search{flex:1;min-width:180px}
+input,textarea,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #cbd7e3;
+  border-radius:10px;
+  font:inherit;
+  background:white;
+  color:var(--ink);
+}
+input:focus,textarea:focus,select:focus{
+  outline:2px solid #8bbce2;
+}
+table{width:100%;border-collapse:collapse}
+th,td{
+  text-align:left;
+  padding:12px 9px;
+  border-bottom:1px solid var(--line);
+}
+th{font-size:13px;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:24px 10px;
+}
+form{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.field label{
+  display:block;
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:6px;
+}
+.field.full{grid-column:1/-1}
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.hidden{display:none!important}
+.muted{color:var(--muted);font-size:14px}
+.card{
+  background:#f5f8fc;
+  border:1px solid var(--line);
+  padding:15px;
+  border-radius:12px;
+  margin:12px 0;
+}
+.card h4{margin:0 0 10px}
+.patient-heading{
+  background:#eaf2fa;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:16px;
+}
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#e1edf8;
+  color:var(--navy);
+  font-size:12px;
+  font-weight:bold;
+}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:20px;
+}
+@media(max-width:560px){
+  header h1{font-size:22px}
+  main{padding:17px 12px 30px}
+  .panel{padding:16px}
+  form{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .stat{padding:15px}
+  .stat strong{font-size:27px}
+  th,td{padding:10px 7px;font-size:13px}
+  .toolbar .btn{white-space:nowrap}
+}
+@media print{
+  body{background:white}
+  header,nav,footer,.notice,.no-print,
+  #overview,#patients,#patientFormPanel,
+  #staff,#bookings,#emergency{display:none!important}
+  main{padding:0;max-width:none}
+  #patientJournal{display:block!important;box-shadow:none}
+}
+</style>
+</head>
+
 <body>
-<header><h1>✚ SjukhusSystem Sverige</h1><p>Digital vårdplattform</p></header>
+
+<header>
+  <h1>✚ SjukhusSystem Sverige</h1>
+  <p>Digital vårdplattform</p>
+</header>
+
 <main>
-<div class="notice"><strong>Demoversion:</strong> Använd endast påhittade testuppgifter. Uppgifterna sparas lokalt i den här webbläsaren. Detta är inte ett säkert journalsystem. Lägg aldrig in riktiga patientuppgifter.</div>
-<section id="overview"><h2>Välkommen!</h2><p class="intro">Översikt över sjukhusets verksamhet.</p>
-<div class="stats"><div class="stat"><span>Patienter</span><strong id="countPatients">0</strong></div><div class="stat"><span>Läkare</span><strong>0</strong></div><div class="stat"><span>Bokningar idag</span><strong>0</strong></div><div class="stat"><span>Akutmottagning</span><strong>0</strong></div></div></section>
-<nav aria-label="Huvudmeny"><button class="active" data-page="overview">Översikt</button><button data-page="patients">Patienter</button><button data-page="staff">Personal</button><button data-page="bookings">Bokningar</button><button data-page="emergency">Akuten</button></nav>
-<section id="patients" class="panel hidden"><h3>Patientregister</h3><p class="muted">Lägg till, sök, ändra och ta bort påhittade testpatienter.</p>
-<div class="toolbar"><input class="search" id="searchPatient" type="search" placeholder="Sök namn eller patientnummer"><button class="btn primary" id="addPatient">+ Ny patient</button></div>
-<div class="table-wrap"><table><thead><tr><th>Patientnummer</th><th>Namn</th><th>Födelsedatum</th><th>Telefon</th><th>Åtgärder</th></tr></thead><tbody id="patientRows"></tbody></table><div id="emptyPatients" class="empty">Inga patienter registrerade ännu.</div></div></section>
-<section id="patientFormPanel" class="panel hidden"><h3 id="formTitle">Registrera ny patient</h3>
-<form id="patientForm"><input type="hidden" id="patientId">
-<div class="field"><label for="patientName">För- och efternamn *</label><input id="patientName" required maxlength="100"></div>
-<div class="field"><label for="patientBirth">Födelsedatum</label><input id="patientBirth" type="date"></div>
-<div class="field"><label for="patientPhone">Telefon</label><input id="patientPhone" type="tel" maxlength="30"></div>
-<div class="field"><label for="patientNumber">Patientnummer</label><input id="patientNumber" maxlength="30" placeholder="Skapas automatiskt"></div>
-<div class="field full"><label for="patientNote">Testanteckning (endast låtsasuppgifter)</label><textarea id="patientNote" rows="3" maxlength="500" placeholder="Endast för demonstration"></textarea></div></form>
-<div class="actions"><button class="btn primary" id="savePatient" type="button">Spara patient</button><button class="btn" id="cancelPatient" type="button">Avbryt</button></div></section>
-<section id="staff" class="panel hidden"><h3>Personal</h3><p>Personalmodulen kommer i nästa utvecklingssteg.</p></section>
-<section id="bookings" class="panel hidden"><h3>Bokningar</h3><p>Bokningsmodulen kommer i nästa utvecklingssteg.</p></section>
-<section id="emergency" class="panel hidden"><h3>Akutmottagning</h3><p>Akutmodulen kommer i nästa utvecklingssteg.</p></section>
-</main><footer>SjukhusSystem Sverige © 2026</footer>
+
+<div class="notice">
+  <strong>Demoversion:</strong>
+  Använd endast påhittade testuppgifter.
+  Uppgifterna sparas lokalt i den här webbläsaren.
+  Detta är inte ett säkert journalsystem.
+  Lägg aldrig in riktiga patientuppgifter.
+</div>
+
+<section id="overview">
+  <h2>Välkommen!</h2>
+  <p class="intro">Översikt över sjukhusets verksamhet.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <span>Patienter</span>
+      <strong id="countPatients">0</strong>
+    </div>
+    <div class="stat">
+      <span>Läkare</span>
+      <strong id="countDoctors">0</strong>
+    </div>
+    <div class="stat">
+      <span>Bokningar idag</span>
+      <strong>0</strong>
+    </div>
+    <div class="stat">
+      <span>Akutmottagning</span>
+      <strong>0</strong>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Huvudmeny">
+  <button class="active" data-page="overview">Översikt</button>
+  <button data-page="patients">Patienter</button>
+  <button data-page="staff">Personal</button>
+  <button data-page="bookings">Bokningar</button>
+  <button data-page="emergency">Akuten</button>
+</nav>
+
+<!-- PATIENTER -->
+
+<section id="patients" class="panel hidden">
+  <h3>Patientregister</h3>
+  <p class="muted">Registrera och hantera påhittade testpatienter.</p>
+
+  <div class="toolbar">
+    <input class="search" id="searchPatient"
+      type="search" placeholder="Sök namn eller patientnummer">
+    <button class="btn primary" id="addPatient">+ Ny patient</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Patientnummer</th>
+          <th>Namn</th>
+          <th>Födelsedatum</th>
+          <th>Telefon</th>
+          <th>Åtgärder</th>
+        </tr>
+      </thead>
+      <tbody id="patientRows"></tbody>
+    </table>
+    <div id="emptyPatients" class="empty">
+      Inga patienter registrerade ännu.
+    </div>
+  </div>
+</section>
+
+<!-- PATIENTFORMULÄR -->
+
+<section id="patientFormPanel" class="panel hidden">
+  <h3 id="formTitle">Registrera ny patient</h3>
+
+  <form id="patientForm">
+    <input type="hidden" id="patientId">
+
+    <div class="field">
+      <label for="patientName">För- och efternamn *</label>
+      <input id="patientName" required maxlength="100">
+    </div>
+
+    <div class="field">
+      <label for="patientBirth">Födelsedatum</label>
+      <input id="patientBirth" type="date">
+    </div>
+
+    <div class="field">
+      <label for="patientPhone">Telefon</label>
+      <input id="patientPhone" type="tel" maxlength="30">
+    </div>
+
+    <div class="field">
+      <label for="patientNumber">Patientnummer</label>
+      <input id="patientNumber" maxlength="30"
+        placeholder="Skapas automatiskt">
+    </div>
+
+    <div class="field full">
+      <label for="patientNote">Testanteckning</label>
+      <textarea id="patientNote" rows="3"
+        maxlength="500"
+        placeholder="Endast för demonstration"></textarea>
+    </div>
+  </form>
+
+  <div class="actions">
+    <button class="btn primary" id="savePatient" type="button">
+      Spara patient
+    </button>
+    <button class="btn" id="cancelPatient" type="button">
+      Avbryt
+    </button>
+  </div>
+</section>
+
+<!-- PATIENTJOURNAL -->
+
+<section id="patientJournal" class="panel hidden">
+
+  <div class="no-print">
+    <button class="btn" id="backPatients">← Till patientregistret</button>
+  </div>
+
+  <h3>Patientjournal</h3>
+
+  <div class="patient-heading">
+    <span class="badge">TESTJOURNAL</span>
+    <h2 id="journalPatientName">Patient</h2>
+    <p><strong>Patientnummer:</strong>
+      <span id="journalPatientNumber"></span>
+    </p>
+    <p><strong>Födelsedatum:</strong>
+      <span id="journalPatientBirth"></span>
+    </p>
+    <p><strong>Telefon:</strong>
+      <span id="journalPatientPhone"></span>
+    </p>
+  </div>
+
+  <div class="no-print">
+    <h3>Registrera nytt besök</h3>
+
+    <form id="journalForm">
+
+      <div class="field">
+        <label for="visitDate">Besöksdatum</label>
+        <input type="date" id="visitDate" required>
+      </div>
+
+      <div class="field">
+        <label for="visitType">Typ av besök</label>
+        <select id="visitType">
+          <option>Vårdcentral</option>
+          <option>Läkarbesök</option>
+          <option>Akutmottagning</option>
+          <option>Uppföljning</option>
+          <option>Kontroll</option>
+          <option>Annat</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label for="diagnosis">Diagnos (testuppgift)</label>
+        <input id="diagnosis" maxlength="200"
+          placeholder="Exempel: Testdiagnos">
+      </div>
+
+      <div class="field full">
+        <label for="treatment">Behandling</label>
+        <textarea id="treatment" rows="3"
+          maxlength="1000"
+          placeholder="Påhittad behandling"></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="doctorNote">Läkaranteckning</label>
+        <textarea id="doctorNote" rows="4"
+          maxlength="2000"
+          placeholder="Skriv en påhittad anteckning"></textarea>
+      </div>
+
+    </form>
+
+    <div class="actions">
+      <button class="btn primary" id="saveVisit" type="button">
+        Spara besök
+      </button>
+      <button class="btn" id="clearVisit" type="button">
+        Rensa formulär
+      </button>
+    </div>
+
+    <hr>
+  </div>
+
+  <h3>Tidigare besök och journalhistorik</h3>
+
+  <div id="journalHistory">
+    <p class="empty">Inga besök registrerade ännu.</p>
+  </div>
+
+  <div class="actions no-print">
+    <button class="btn green" id="printJournal">
+      Skriv ut journal
+    </button>
+  </div>
+
+</section>
+
+<!-- PERSONAL -->
+
+<section id="staff" class="panel hidden">
+  <h3>Personal</h3>
+  <p>Personalmodulen kommer i nästa utvecklingssteg.</p>
+</section>
+
+<!-- BOKNINGAR -->
+
+<section id="bookings" class="panel hidden">
+  <h3>Bokningar</h3>
+  <p>Bokningsmodulen kommer i nästa utvecklingssteg.</p>
+</section>
+
+<!-- AKUTEN -->
+
+<section id="emergency" class="panel hidden">
+  <h3>Akutmottagning</h3>
+  <p>Akutmodulen kommer i nästa utvecklingssteg.</p>
+</section>
+
+</main>
+
+<footer>SjukhusSystem Sverige © 2026</footer>
+
 <script>
-const KEY="sjukhus_demo_patients_v1";let patients=[];try{patients=JSON.parse(localStorage.getItem(KEY)||"[]");if(!Array.isArray(patients))patients=[]}catch(e){patients=[]}
+const KEY="sjukhus_demo_patients_v1";
+
+let patients=[];
+let currentPatientId=null;
+
+try{
+  patients=JSON.parse(localStorage.getItem(KEY)||"[]");
+  if(!Array.isArray(patients))patients=[];
+}catch(e){
+  patients=[];
+}
+
+patients.forEach(p=>{
+  if(!Array.isArray(p.visits))p.visits=[];
+});
+
 const $=id=>document.getElementById(id);
-function saveData(){localStorage.setItem(KEY,JSON.stringify(patients))}
-function updateCount(){$("countPatients").textContent=patients.length}
-function showPage(page){["overview","patients","staff","bookings","emergency"].forEach(id=>$(id).classList.toggle("hidden",id!==page));$("patientFormPanel").classList.add("hidden");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page==="patients")renderPatients()}
-document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
-function renderPatients(){const q=$("searchPatient").value.trim().toLocaleLowerCase("sv");const list=patients.filter(p=>(p.name+" "+p.number).toLocaleLowerCase("sv").includes(q));$("patientRows").innerHTML="";$("emptyPatients").classList.toggle("hidden",list.length>0);
-list.forEach(p=>{const tr=document.createElement("tr");[p.number,p.name,p.birth||"—",p.phone||"—"].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});const td=document.createElement("td");const edit=document.createElement("button");edit.className="btn small";edit.textContent="Ändra";edit.onclick=()=>openForm(p);const del=document.createElement("button");del.className="btn small danger";del.textContent="Ta bort";del.style.marginLeft="5px";del.onclick=()=>{if(confirm("Vill du ta bort testpatienten?")){patients=patients.filter(x=>x.id!==p.id);saveData();renderPatients()}};td.append(edit,del);tr.appendChild(td);$("patientRows").appendChild(tr)});updateCount()}
-function openForm(p){$("patientForm").reset();$("patientId").value=p?.id||"";$("formTitle").textContent=p?"Ändra patient":"Registrera ny patient";$("patientName").value=p?.name||"";$("patientBirth").value=p?.birth||"";$("patientPhone").value=p?.phone||"";$("patientNumber").value=p?.number||"";$("patientNote").value=p?.note||"";$("patientFormPanel").classList.remove("hidden");$("patientFormPanel").scrollIntoView({behavior:"smooth"})}
-$("addPatient").onclick=()=>openForm(null);$("cancelPatient").onclick=()=>$("patientFormPanel").classList.add("hidden");$("searchPatient").oninput=renderPatients;
-$("savePatient").onclick=()=>{const name=$("patientName").value.trim();if(!name){alert("Skriv patientens namn.");$("patientName").focus();return}const id=$("patientId").value||String(Date.now());const old=patients.find(p=>p.id===id);const number=$("patientNumber").value.trim()||old?.number||("TEST-"+String(Date.now()).slice(-6));const item={id,name,birth:$("patientBirth").value,phone:$("patientPhone").value.trim(),number,note:$("patientNote").value.trim()};if(old)patients=patients.map(p=>p.id===id?item:p);else patients.unshift(item);saveData();$("patientFormPanel").classList.add("hidden");$("searchPatient").value="";renderPatients();alert("Testpatienten har sparats på den här enheten.")};
+
+function saveData(){
+  localStorage.setItem(KEY,JSON.stringify(patients));
+}
+
+function updateCount(){
+  $("countPatients").textContent=patients.length;
+}
+
+function showPage(page){
+  [
+    "overview","patients","staff","bookings","emergency"
+  ].forEach(id=>{
+    $(id).classList.toggle("hidden",id!==page);
+  });
+
+  $("patientFormPanel").classList.add("hidden");
+  $("patientJournal").classList.add("hidden");
+
+  document.querySelectorAll("nav button").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page===page);
+  });
+
+  if(page==="patients")renderPatients();
+}
+
+document.querySelectorAll("nav button").forEach(b=>{
+  b.addEventListener("click",()=>showPage(b.dataset.page));
+});
+
+function renderPatients(){
+
+  const q=$("searchPatient").value.trim().toLocaleLowerCase("sv");
+
+  const list=patients.filter(p=>
+    (p.name+" "+p.number).toLocaleLowerCase("sv").includes(q)
+  );
+
+  $("patientRows").innerHTML="";
+  $("emptyPatients").classList.toggle("hidden",list.length>0);
+
+  list.forEach(p=>{
+
+    const tr=document.createElement("tr");
+
+    [p.number,p.name,p.birth||"—",p.phone||"—"].forEach(v=>{
+      const td=document.createElement("td");
+      td.textContent=v;
+      tr.appendChild(td);
+    });
+
+    const td=document.createElement("td");
+
+    const journal=document.createElement("button");
+    journal.className="btn small primary";
+    journal.textContent="Journal";
+    journal.onclick=()=>openJournal(p.id);
+
+    const edit=document.createElement("button");
+    edit.className="btn small";
+    edit.textContent="Ändra";
+    edit.style.marginLeft="5px";
+    edit.onclick=()=>openForm(p);
+
+    const del=document.createElement("button");
+    del.className="btn small danger";
+    del.textContent="Ta bort";
+    del.style.marginLeft="5px";
+
+    del.onclick=()=>{
+      if(confirm("Vill du ta bort testpatienten och dess testjournal?")){
+        patients=patients.filter(x=>x.id!==p.id);
+        saveData();
+        renderPatients();
+      }
+    };
+
+    td.append(journal,edit,del);
+    tr.appendChild(td);
+
+    $("patientRows").appendChild(tr);
+  });
+
+  updateCount();
+}
+
+function openForm(p){
+
+  $("patientForm").reset();
+
+  $("patientId").value=p?.id||"";
+  $("formTitle").textContent=p?"Ändra patient":"Registrera ny patient";
+
+  $("patientName").value=p?.name||"";
+  $("patientBirth").value=p?.birth||"";
+  $("patientPhone").value=p?.phone||"";
+  $("patientNumber").value=p?.number||"";
+  $("patientNote").value=p?.note||"";
+
+  $("patientFormPanel").classList.remove("hidden");
+
+  $("patientFormPanel").scrollIntoView({behavior:"smooth"});
+}
+
+$("addPatient").onclick=()=>openForm(null);
+
+$("cancelPatient").onclick=()=>{
+  $("patientFormPanel").classList.add("hidden");
+};
+
+$("searchPatient").oninput=renderPatients;
+
+$("savePatient").onclick=()=>{
+
+  if(!$("patientForm").reportValidity())return;
+
+  const name=$("patientName").value.trim();
+
+  if(!name){
+    alert("Skriv patientens namn.");
+    return;
+  }
+
+  const id=$("patientId").value||String(Date.now());
+  const old=patients.find(p=>p.id===id);
+
+  const number=$("patientNumber").value.trim()
+    ||old?.number
+    ||("TEST-"+String(Date.now()).slice(-6));
+
+  const item={
+    id,
+    name,
+    birth:$("patientBirth").value,
+    phone:$("patientPhone").value.trim(),
+    number,
+    note:$("patientNote").value.trim(),
+    visits:old?.visits||[]
+  };
+
+  if(old){
+    patients=patients.map(p=>p.id===id?item:p);
+  }else{
+    patients.unshift(item);
+  }
+
+  saveData();
+
+  $("patientFormPanel").classList.add("hidden");
+  $("searchPatient").value="";
+
+  renderPatients();
+
+  alert("Testpatienten har sparats på den här enheten.");
+};
+
+// ÖPPNA JOURNAL
+
+function openJournal(id){
+
+  const p=patients.find(x=>x.id===id);
+  if(!p)return;
+
+  currentPatientId=id;
+
+  if(!Array.isArray(p.visits))p.visits=[];
+
+  $("patientFormPanel").classList.add("hidden");
+
+  ["overview","patients","staff","bookings","emergency"].forEach(id=>{
+    $(id).classList.add("hidden");
+  });
+
+  $("patientJournal").classList.remove("hidden");
+
+  document.querySelectorAll("nav button").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page==="patients");
+  });
+
+  $("journalPatientName").textContent=p.name;
+  $("journalPatientNumber").textContent=p.number;
+  $("journalPatientBirth").textContent=p.birth||"Ej angivet";
+  $("journalPatientPhone").textContent=p.phone||"Ej angivet";
+
+  $("visitDate").value=new Date().toLocaleDateString("sv-SE");
+
+  renderJournal();
+
+  $("patientJournal").scrollIntoView({behavior:"smooth"});
+}
+
+// VISA JOURNALHISTORIK
+
+function renderJournal(){
+
+  const p=patients.find(x=>x.id===currentPatientId);
+  if(!p)return;
+
+  const history=$("journalHistory");
+  history.innerHTML="";
+
+  if(!p.visits||p.visits.length===0){
+    const empty=document.createElement("p");
+    empty.className="empty";
+    empty.textContent="Inga besök registrerade ännu.";
+    history.appendChild(empty);
+    return;
+  }
+
+  [...p.visits].reverse().forEach(v=>{
+
+    const card=document.createElement("div");
+    card.className="card";
+
+    const title=document.createElement("h4");
+    title.textContent=v.type+" – "+v.date;
+
+    const badge=document.createElement("span");
+    badge.className="badge";
+    badge.textContent="Testbesök";
+
+    const diagnosis=document.createElement("p");
+    diagnosis.textContent="Diagnos: "+(v.diagnosis||"Ej angiven");
+
+    const treatment=document.createElement("p");
+    treatment.textContent="Behandling: "+(v.treatment||"Ej angiven");
+
+    const note=document.createElement("p");
+    note.textContent="Läkaranteckning: "+(v.note||"Ej angiven");
+
+    const del=document.createElement("button");
+    del.className="btn small danger no-print";
+    del.textContent="Ta bort besök";
+
+    del.onclick=()=>{
+      if(confirm("Vill du ta bort detta testbesök?")){
+        p.visits=p.visits.filter(x=>x.id!==v.id);
+        saveData();
+        renderJournal();
+      }
+    };
+
+    card.append(title,badge,diagnosis,treatment,note,del);
+    history.appendChild(card);
+  });
+}
+
+// SPARA NYTT BESÖK
+
+$("saveVisit").onclick=()=>{
+
+  const p=patients.find(x=>x.id===currentPatientId);
+  if(!p)return;
+
+  if(!$("journalForm").reportValidity())return;
+
+  const visit={
+    id:String(Date.now()),
+    date:$("visitDate").value,
+    type:$("visitType").value,
+    diagnosis:$("diagnosis").value.trim(),
+    treatment:$("treatment").value.trim(),
+    note:$("doctorNote").value.trim()
+  };
+
+  p.visits.push(visit);
+
+  saveData();
+
+  $("journalForm").reset();
+  $("visitDate").value=new Date().toLocaleDateString("sv-SE");
+
+  renderJournal();
+
+  alert("Testbesöket har sparats!");
+};
+
+$("clearVisit").onclick=()=>{
+  $("journalForm").reset();
+  $("visitDate").value=new Date().toLocaleDateString("sv-SE");
+};
+
+$("backPatients").onclick=()=>{
+  $("patientJournal").classList.add("hidden");
+  showPage("patients");
+};
+
+$("printJournal").onclick=()=>{
+  window.print();
+};
+
 updateCount();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
