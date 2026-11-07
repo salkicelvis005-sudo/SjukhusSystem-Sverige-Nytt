@@ -6,74 +6,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#153f68">
 <title>SjukhusSystem Sverige</title>
-
 <style>
-:root{
---navy:#153f68;--blue:#246da2;--bg:#f1f5fa;
---ink:#203247;--muted:#68798b;--line:#dce5ee;
---red:#b42318;--green:#16794b;
+:root {
+--navy:#153f68;
+--blue:#246da2;
+--bg:#f1f5fa;
+--ink:#203247;
+--muted:#68798b;
+--line:#dce5ee;
+--green:#16794b;
+--red:#b42318;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:var(--navy);color:white;padding:23px 18px}
-header h1{margin:0 0 8px;font-size:25px}
+body{
+margin:0;font-family:Arial,sans-serif;
+background:var(--bg);color:var(--ink)
+}
+header{
+background:var(--navy);color:white;
+padding:22px 16px
+}
+header h1{margin:0 0 7px;font-size:24px}
 header p{margin:0;color:#d4e3f2}
-main{max-width:1100px;margin:auto;padding:20px 15px 40px}
-.notice{background:#fff8e6;border:1px solid #f1d48a;color:#72520b;padding:15px;border-radius:13px;line-height:1.5;margin-bottom:20px}
-h2{font-size:25px}
-.intro,.muted{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
-.stat,.panel{background:white;border-radius:18px;padding:20px;box-shadow:0 4px 16px #193b5b0b}
-.stat span{display:block;color:var(--muted)}
-.stat strong{display:block;font-size:30px;color:var(--blue);margin-top:8px}
-nav{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
-button{cursor:pointer;font:inherit}
-nav button,.btn{border:0;border-radius:11px;padding:12px 15px;background:#dfeaf5;color:var(--navy);font-weight:bold}
-nav button.active,.btn.primary{background:var(--navy);color:white}
-.btn.danger{background:#fff0ef;color:var(--red)}
-.btn.small{padding:8px 10px;font-size:13px;margin:2px}
-.btn.success{background:#e3f5eb;color:var(--green)}
-.panel{margin-bottom:18px}
-.panel h3{font-size:21px;margin:0 0 15px}
+main{max-width:1100px;margin:auto;padding:16px}
+.panel,.stat{
+background:white;border-radius:15px;
+padding:18px;margin-bottom:16px;
+box-shadow:0 3px 12px #193b5b0b
+}
 .hidden{display:none!important}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
-.search{flex:1;min-width:180px}
+.notice{
+background:#fff8e6;padding:14px;
+border:1px solid #f1d48a;border-radius:12px;
+margin-bottom:16px;line-height:1.5
+}
 input,select,textarea{
-width:100%;padding:12px;border:1px solid #cbd7e3;
-border-radius:10px;background:white;color:var(--ink);font:inherit
+width:100%;padding:12px;
+border:1px solid #cbd7e3;border-radius:9px;
+font:inherit;margin:5px 0 12px
 }
-input:focus,select:focus,textarea:focus{outline:2px solid #8bbce2}
-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}
+label{font-weight:bold;font-size:14px}
+button{
+border:0;border-radius:9px;padding:12px 15px;
+font:inherit;font-weight:bold;cursor:pointer;
+background:#e1ebf5;color:var(--navy);
+margin:3px
+}
+.primary{background:var(--navy);color:white}
+.danger{background:#fff0ef;color:var(--red)}
+.success{background:#e3f5eb;color:var(--green)}
+nav{display:flex;flex-wrap:wrap;gap:5px;margin:15px 0}
+nav button.active{background:var(--navy);color:white}
+.stats{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:10px;margin:15px 0
+}
+.stat{margin:0}
+.stat span{color:var(--muted)}
+.stat strong{display:block;font-size:28px;color:var(--blue);margin-top:7px}
+.formgrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:10px
+}
 .full{grid-column:1/-1}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
 .table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:520px}
-th,td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}
-th{font-size:13px;color:var(--muted)}
-.empty{text-align:center;padding:25px;color:var(--muted)}
-.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#e5eef8;color:var(--navy);font-size:12px}
-.card-info{background:#f4f8fc;border-radius:12px;padding:14px;margin:12px 0}
-.warning{color:var(--red);font-weight:bold}
-.history-item{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}
-footer{text-align:center;color:var(--muted);padding:25px}
-@media(max-width:560px){
-header h1{font-size:22px}
-main{padding:15px 11px}
-.panel{padding:15px}
-form{grid-template-columns:1fr}
-.full{grid-column:auto}
-nav button{padding:12px}
-.stat{padding:15px}
+table{width:100%;border-collapse:collapse;min-width:500px}
+th,td{padding:11px 7px;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-size:13px}
+.small{padding:7px;font-size:12px}
+.tag{background:#e5eef8;padding:5px 9px;border-radius:20px;font-size:12px}
+.muted{color:var(--muted)}
+.login{
+max-width:420px;margin:35px auto;
+background:white;padding:25px;border-radius:17px;
+box-shadow:0 5px 25px #193b5b18
 }
-@media print{
-header,nav,.notice,footer,.no-print{display:none!important}
-body{background:white}
-.panel{box-shadow:none}
+.login h2{text-align:center;color:var(--navy)}
+.login-logo{text-align:center;font-size:48px}
+#userInfo{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+footer{text-align:center;padding:20px;color:var(--muted)}
+@media(max-width:560px){
+main{padding:10px}
+.panel{padding:13px}
+.formgrid{grid-template-columns:1fr}
+.full{grid-column:auto}
+header h1{font-size:21px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -84,109 +103,124 @@ body{background:white}
 <main>
 
 <div class="notice">
-<strong>Viktig information:</strong>
-Detta är endast en lokal demonstration.
-Använd enbart påhittade testuppgifter.
-Uppgifter sparas i webbläsaren.
-Detta är inte ett säkert journalsystem.
-Alla recept är ogiltiga demorecept och får aldrig användas för behandling.
+<strong>DEMONSTRATION – INTE ETT RIKTIGT JOURNALSYSTEM</strong><br>
+Använd endast påhittade testuppgifter.
+Information sparas lokalt i webbläsaren.
+Inga recept eller medicinska beslut är giltiga.
 </div>
 
-<div class="stats">
+<!-- LOGIN -->
+
+<section id="loginPage" class="login">
+<div class="login-logo">🏥</div>
+<h2>Logga in</h2>
+<p class="muted">Välkommen till SjukhusSystem Sverige</p>
+
+<label>Användarnamn</label>
+<input id="username" placeholder="Användarnamn">
+
+<label>Lösenord</label>
+<input id="password" type="password" placeholder="Lösenord">
+
+<button class="primary" style="width:100%" onclick="login()">Logga in</button>
+
+<p id="loginError" class="warning"></p>
+
+<hr>
+<p><strong>Testkonton:</strong></p>
+<p>Administratör: admin / admin123</p>
+<p>Läkare: lakare / lakare123</p>
+<p>Patient: patient / patient123</p>
+</section>
+
+<!-- APP -->
+
+<div id="app" class="hidden">
+
+<div class="panel" id="userInfo">
+<div>
+<strong id="welcome"></strong>
+<div class="muted" id="roleName"></div>
+</div>
+<button class="danger" onclick="logout()">Logga ut</button>
+</div>
+
+<div class="stats" id="stats">
 <div class="stat"><span>Patienter</span><strong id="countPatients">0</strong></div>
 <div class="stat"><span>Personal</span><strong id="countStaff">0</strong></div>
 <div class="stat"><span>Bokningar idag</span><strong id="countBookings">0</strong></div>
-<div class="stat"><span>Akutärenden</span><strong id="countEmergency">0</strong></div>
+<div class="stat"><span>Aktiva akutärenden</span><strong id="countEmergency">0</strong></div>
 </div>
 
-<nav>
-<button class="active" data-page="overview">Översikt</button>
+<nav id="navigation">
+<button data-page="overview">Översikt</button>
 <button data-page="patients">Patienter</button>
 <button data-page="staff">Personal</button>
 <button data-page="bookings">Bokningar</button>
 <button data-page="emergency">Akuten</button>
 <button data-page="medicines">Läkemedel</button>
-<button data-page="prescriptions">Recept</button>
+<button data-page="prescriptions">Demorecept</button>
+<button data-page="myPage">Min sida</button>
 </nav>
 
-<!-- ÖVERSIKT -->
-
-<section id="overview" class="panel">
+<section id="overview" class="panel page">
 <h2>Välkommen!</h2>
-<p class="intro">Översikt över sjukhusets verksamhet.</p>
-<div class="card-info">
-<strong>SjukhusSystem Sverige</strong>
-<p>Hantera testpatienter, personal, bokningar, läkemedel och demorecept på samma plats.</p>
+<p>Här kan du hantera sjukhusets testverksamhet.</p>
+<div class="notice">
+Du är inloggad i SjukhusSystem Sveriges demonstrationsmiljö.
 </div>
+<h3>Systeminformation</h3>
+<p>Version: 2.0 Demo</p>
+<p>Språk: Svenska</p>
+<p>Systemstatus: Aktiv</p>
 </section>
 
 <!-- PATIENTER -->
 
-<section id="patients" class="panel hidden">
-<h3>Patientregister</h3>
-<p class="muted">Registrera och hantera testpatienter.</p>
-
-<div class="toolbar">
-<input id="patientSearch" class="search" placeholder="Sök patient">
-<button class="btn primary" onclick="newPatient()">+ Ny patient</button>
+<section id="patients" class="panel page hidden">
+<h2>Patientregister</h2>
+<input id="patientSearch" placeholder="Sök patient..." oninput="render()">
+<button class="primary admin doctor" onclick="newPatient()">+ Ny patient</button>
+<div id="patientForm" class="hidden">
+<h3>Registrera testpatient</h3>
+<div class="formgrid">
+<div><label>Namn</label><input id="pName"></div>
+<div><label>Födelsedatum</label><input id="pBirth" type="date"></div>
+<div><label>Telefon</label><input id="pPhone"></div>
+<div><label>Patientnummer</label><input id="pNumber"></div>
+<div class="full"><label>Testanteckning</label><textarea id="pNote"></textarea></div>
 </div>
-
-<div id="patientForm" class="card-info hidden">
-<h3 id="patientFormTitle">Registrera patient</h3>
-<form id="patientData">
-<input type="hidden" id="pId">
-<div class="field"><label>Namn *</label><input id="pName" required></div>
-<div class="field"><label>Födelsedatum</label><input id="pBirth" type="date"></div>
-<div class="field"><label>Telefon</label><input id="pPhone"></div>
-<div class="field"><label>Patientnummer</label><input id="pNumber" placeholder="Skapas automatiskt"></div>
-<div class="field full"><label>Testanteckning</label><textarea id="pNote"></textarea></div>
-</form>
-<div class="actions">
-<button class="btn primary" onclick="savePatient()">Spara patient</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<button class="primary" onclick="savePatient()">Spara</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead><tr><th>Patientnummer</th><th>Namn</th><th>Födelsedatum</th><th>Telefon</th><th>Åtgärder</th></tr></thead>
+<thead><tr><th>Nummer</th><th>Namn</th><th>Födelsedatum</th><th>Telefon</th><th>Åtgärder</th></tr></thead>
 <tbody id="patientRows"></tbody>
 </table>
 </div>
-<div id="patientHistory" class="card-info hidden"></div>
 </section>
 
 <!-- PERSONAL -->
 
-<section id="staff" class="panel hidden">
-<h3>Personalregister</h3>
-<button class="btn primary" onclick="newStaff()">+ Lägg till personal</button>
-
-<div id="staffForm" class="card-info hidden">
-<h3 id="staffFormTitle">Registrera personal</h3>
-<form id="staffData">
-<input type="hidden" id="sId">
-<div class="field"><label>Namn *</label><input id="sName" required></div>
-<div class="field"><label>Yrkesroll</label>
+<section id="staff" class="panel page hidden">
+<h2>Personalregister</h2>
+<button class="primary admin" onclick="newStaff()">+ Lägg till personal</button>
+<div id="staffForm" class="hidden">
+<h3>Personaluppgifter</h3>
+<label>Namn</label><input id="sName">
+<label>Yrkesroll</label>
 <select id="sRole">
-<option>Läkare</option>
-<option>Sjuksköterska</option>
-<option>Undersköterska</option>
-<option>Administratör</option>
-<option>Övrig personal</option>
-</select></div>
-<div class="field"><label>Avdelning</label><input id="sDepartment"></div>
-<div class="field"><label>Telefon</label><input id="sPhone"></div>
-</form>
-<div class="actions">
-<button class="btn primary" onclick="saveStaff()">Spara</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<option>Läkare</option><option>Sjuksköterska</option>
+<option>Undersköterska</option><option>Administratör</option>
+</select>
+<label>Avdelning</label><input id="sDepartment">
+<button class="primary" onclick="saveStaff()">Spara</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead><tr><th>Namn</th><th>Yrkesroll</th><th>Avdelning</th><th>Åtgärder</th></tr></thead>
+<thead><tr><th>Namn</th><th>Roll</th><th>Avdelning</th><th>Åtgärder</th></tr></thead>
 <tbody id="staffRows"></tbody>
 </table>
 </div>
@@ -194,28 +228,21 @@ Alla recept är ogiltiga demorecept och får aldrig användas för behandling.
 
 <!-- BOKNINGAR -->
 
-<section id="bookings" class="panel hidden">
-<h3>Bokningar</h3>
-<button class="btn primary" onclick="newBooking()">+ Ny bokning</button>
-
-<div id="bookingForm" class="card-info hidden">
-<h3>Skapa bokning</h3>
-<form>
-<div class="field"><label>Patient</label><select id="bPatient"></select></div>
-<div class="field"><label>Datum</label><input id="bDate" type="date"></div>
-<div class="field"><label>Tid</label><input id="bTime" type="time"></div>
-<div class="field"><label>Avdelning</label><input id="bDepartment"></div>
-<div class="field full"><label>Anteckning</label><textarea id="bNote"></textarea></div>
-</form>
-<div class="actions">
-<button class="btn primary" onclick="saveBooking()">Spara bokning</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<section id="bookings" class="panel page hidden">
+<h2>Bokningssystem</h2>
+<button class="primary admin doctor" onclick="newBooking()">+ Ny bokning</button>
+<div id="bookingForm" class="hidden">
+<label>Patient</label><select id="bPatient"></select>
+<label>Datum</label><input id="bDate" type="date">
+<label>Tid</label><input id="bTime" type="time">
+<label>Avdelning</label><input id="bDepartment">
+<label>Anteckning</label><textarea id="bNote"></textarea>
+<button class="primary" onclick="saveBooking()">Spara bokning</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead><tr><th>Patient</th><th>Datum</th><th>Tid</th><th>Avdelning</th><th>Åtgärder</th></tr></thead>
+<thead><tr><th>Patient</th><th>Datum</th><th>Tid</th><th>Avdelning</th><th>Åtgärd</th></tr></thead>
 <tbody id="bookingRows"></tbody>
 </table>
 </div>
@@ -223,34 +250,23 @@ Alla recept är ogiltiga demorecept och får aldrig användas för behandling.
 
 <!-- AKUTEN -->
 
-<section id="emergency" class="panel hidden">
-<h3>Akutmottagning</h3>
-<button class="btn primary" onclick="newEmergency()">+ Registrera akutärende</button>
-
-<div id="emergencyForm" class="card-info hidden">
-<h3>Nytt akutärende – test</h3>
-<form>
-<div class="field"><label>Patient</label><select id="ePatient"></select></div>
-<div class="field"><label>Prioritet</label>
-<select id="ePriority">
-<option>Normal</option><option>Hög</option><option>Mycket hög</option>
-</select></div>
-<div class="field"><label>Datum</label><input id="eDate" type="date"></div>
-<div class="field"><label>Status</label>
-<select id="eStatus">
-<option>Registrerad</option><option>Pågår</option><option>Avslutad</option>
-</select></div>
-<div class="field full"><label>Beskrivning (test)</label><textarea id="eNote"></textarea></div>
-</form>
-<div class="actions">
-<button class="btn primary" onclick="saveEmergency()">Spara</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<section id="emergency" class="panel page hidden">
+<h2>Akutmottagning</h2>
+<button class="primary admin doctor" onclick="newEmergency()">+ Registrera testärende</button>
+<div id="emergencyForm" class="hidden">
+<label>Patient</label><select id="ePatient"></select>
+<label>Prioritet</label>
+<select id="ePriority"><option>Normal</option><option>Hög</option><option>Mycket hög</option></select>
+<label>Datum</label><input id="eDate" type="date">
+<label>Status</label>
+<select id="eStatus"><option>Registrerad</option><option>Pågår</option><option>Avslutad</option></select>
+<label>Beskrivning</label><textarea id="eNote"></textarea>
+<button class="primary" onclick="saveEmergency()">Spara</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead><tr><th>Patient</th><th>Prioritet</th><th>Datum</th><th>Status</th><th>Åtgärder</th></tr></thead>
+<thead><tr><th>Patient</th><th>Prioritet</th><th>Datum</th><th>Status</th><th>Åtgärd</th></tr></thead>
 <tbody id="emergencyRows"></tbody>
 </table>
 </div>
@@ -258,34 +274,20 @@ Alla recept är ogiltiga demorecept och får aldrig användas för behandling.
 
 <!-- LÄKEMEDEL -->
 
-<section id="medicines" class="panel hidden">
-<h3>Läkemedelsregister</h3>
-<p class="muted">Endast fiktiva läkemedelsposter för demonstration.</p>
-<button class="btn primary" onclick="newMedicine()">+ Lägg till läkemedel</button>
-
-<div id="medicineForm" class="card-info hidden">
-<h3 id="medicineFormTitle">Nytt testläkemedel</h3>
-<form id="medicineData">
-<input type="hidden" id="mId">
-<div class="field"><label>Läkemedlets namn *</label><input id="mName" required></div>
-<div class="field"><label>Styrka (demotext)</label><input id="mStrength" placeholder="Exempel: teststyrka"></div>
-<div class="field"><label>Läkemedelsform</label>
-<select id="mType">
-<option>Tablett</option><option>Kapsel</option>
-<option>Flytande</option><option>Kräm</option><option>Övrigt</option>
-</select></div>
-<div class="field"><label>Förpackningsstorlek (test)</label><input id="mPackage"></div>
-<div class="field full"><label>Beskrivning</label><textarea id="mDescription"></textarea></div>
-</form>
-<div class="actions">
-<button class="btn primary" onclick="saveMedicine()">Spara läkemedel</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<section id="medicines" class="panel page hidden">
+<h2>Läkemedelsregister</h2>
+<button class="primary admin" onclick="newMedicine()">+ Lägg till testpost</button>
+<div id="medicineForm" class="hidden">
+<label>Namn</label><input id="mName">
+<label>Styrka – demotext</label><input id="mStrength">
+<label>Form</label>
+<select id="mType"><option>Tablett</option><option>Kapsel</option><option>Flytande</option><option>Kräm</option><option>Övrigt</option></select>
+<button class="primary" onclick="saveMedicine()">Spara</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead><tr><th>Namn</th><th>Styrka</th><th>Form</th><th>Förpackning</th><th>Åtgärder</th></tr></thead>
+<thead><tr><th>Namn</th><th>Styrka</th><th>Form</th><th>Åtgärd</th></tr></thead>
 <tbody id="medicineRows"></tbody>
 </table>
 </div>
@@ -293,64 +295,63 @@ Alla recept är ogiltiga demorecept och får aldrig användas för behandling.
 
 <!-- RECEPT -->
 
-<section id="prescriptions" class="panel hidden">
-<h3>Demorecept och patienthistorik</h3>
-<p class="muted">Alla poster och utskrifter är ogiltiga demonstrationer.</p>
-
-<button class="btn primary" onclick="newPrescription()">+ Skapa demorecept</button>
-
-<div id="prescriptionForm" class="card-info hidden">
-<h3>Nytt demorecept</h3>
-<form id="prescriptionData">
-<div class="field"><label>Patient</label><select id="rPatient"></select></div>
-<div class="field"><label>Läkemedel</label><select id="rMedicine"></select></div>
-<div class="field"><label>Styrka</label><input id="rStrength" placeholder="Demotext"></div>
-<div class="field"><label>Dosering (demotext)</label><input id="rDose" placeholder="Endast testtext"></div>
-<div class="field"><label>Behandlingstid (demotext)</label><input id="rDuration" placeholder="Endast testtext"></div>
-<div class="field"><label>Antal förpackningar (test)</label><input id="rQuantity" type="number" min="1"></div>
-<div class="field"><label>Ansvarig personal</label><select id="rDoctor"></select></div>
-<div class="field"><label>Datum</label><input id="rDate" type="date"></div>
-<div class="field full"><label>Kommentar (test)</label><textarea id="rNote"></textarea></div>
-</form>
-
-<div class="actions">
-<button class="btn primary" onclick="savePrescription()">Spara demorecept</button>
-<button class="btn" onclick="closeForms()">Avbryt</button>
+<section id="prescriptions" class="panel page hidden">
+<h2>Demorecept</h2>
+<p class="muted">Alla recept här är ogiltiga testdokument.</p>
+<button class="primary admin doctor" onclick="newPrescription()">+ Skapa demorecept</button>
+<div id="prescriptionForm" class="hidden">
+<label>Patient</label><select id="rPatient"></select>
+<label>Läkemedel</label><select id="rMedicine"></select>
+<label>Dosering – endast demotext</label><input id="rDose">
+<label>Datum</label><input id="rDate" type="date">
+<button class="primary" onclick="savePrescription()">Spara demorecept</button>
+<button onclick="closeForms()">Avbryt</button>
 </div>
-</div>
-
 <div class="table-wrap">
 <table>
-<thead>
-<tr>
-<th>Datum</th><th>Patient</th><th>Läkemedel</th>
-<th>Personal</th><th>Status</th><th>Åtgärder</th>
-</tr>
-</thead>
+<thead><tr><th>Datum</th><th>Patient</th><th>Läkemedel</th><th>Status</th><th>Åtgärd</th></tr></thead>
 <tbody id="prescriptionRows"></tbody>
 </table>
 </div>
 </section>
 
+<!-- PATIENTENS SIDA -->
+
+<section id="myPage" class="panel page hidden">
+<h2>Min sida</h2>
+<div id="patientDetails"></div>
+<h3>Mina bokningar</h3>
+<div id="myBookings"></div>
+<h3>Min testhistorik</h3>
+<div id="myHistory"></div>
+</section>
+
+</div>
 </main>
 
-<footer>SjukhusSystem Sverige © 2026</footer>
+<footer>SjukhusSystem Sverige © 2026 – Demo</footer>
 
 <script>
+const accounts={
+admin:{password:"admin123",role:"admin",name:"Administratör"},
+lakare:{password:"lakare123",role:"doctor",name:"Demoläkare"},
+patient:{password:"patient123",role:"patient",name:"Testpatient",patientId:"DEMO-001"}
+};
+
+let current=null;
+
 const keys={
-patients:"sjukhus_demo_patients_v1",
-staff:"sjukhus_demo_staff_v1",
-bookings:"sjukhus_demo_bookings_v1",
-emergency:"sjukhus_demo_emergency_v1",
-medicines:"sjukhus_demo_medicines_v1",
-prescriptions:"sjukhus_demo_prescriptions_v1"
+patients:"demo_patients",
+staff:"demo_staff",
+bookings:"demo_bookings",
+emergency:"demo_emergency",
+medicines:"demo_medicines",
+prescriptions:"demo_prescriptions"
 };
 
 function load(k){
-try{
-const x=JSON.parse(localStorage.getItem(keys[k])||"[]");
-return Array.isArray(x)?x:[];
-}catch(e){return []}
+try{return JSON.parse(localStorage.getItem(keys[k])||"[]")}
+catch{return []}
 }
 
 let patients=load("patients");
@@ -361,11 +362,7 @@ let medicines=load("medicines");
 let prescriptions=load("prescriptions");
 
 const $=id=>document.getElementById(id);
-const uid=()=>String(Date.now())+Math.random().toString(16).slice(2,7);
-
-const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
+const uid=()=>Date.now()+"-"+Math.random().toString(16).slice(2,8);
 
 function save(k,v){
 localStorage.setItem(keys[k],JSON.stringify(v));
@@ -376,38 +373,97 @@ const d=new Date();
 return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
 
+function esc(v){
+return String(v??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+/* LOGIN */
+
+function login(){
+const u=$("username").value.trim();
+const p=$("password").value;
+const account=accounts[u];
+
+if(!account||account.password!==p){
+$("loginError").textContent="Fel användarnamn eller lösenord.";
+return;
+}
+
+current={username:u,...account};
+$("loginPage").classList.add("hidden");
+$("app").classList.remove("hidden");
+
+$("welcome").textContent="Välkommen "+current.name;
+$("roleName").textContent="Behörighet: "+({
+admin:"Administratör",
+doctor:"Läkare",
+patient:"Patient"
+}[current.role]);
+
+setupPermissions();
+showPage(current.role==="patient"?"myPage":"overview");
+}
+
+function logout(){
+current=null;
+$("app").classList.add("hidden");
+$("loginPage").classList.remove("hidden");
+$("username").value="";
+$("password").value="";
+$("loginError").textContent="";
+}
+
+function setupPermissions(){
+document.querySelectorAll(".admin").forEach(x=>{
+x.classList.toggle("hidden",current.role!=="admin");
+});
+document.querySelectorAll(".doctor").forEach(x=>{
+x.classList.toggle("hidden",!["admin","doctor"].includes(current.role));
+});
+
+document.querySelectorAll("nav button").forEach(b=>{
+const page=b.dataset.page;
+let allowed=true;
+
+if(current.role==="patient")
+allowed=page==="myPage";
+if(current.role==="doctor")
+allowed=page!=="staff"&&page!=="myPage";
+
+b.classList.toggle("hidden",!allowed);
+});
+
+$("stats").classList.toggle("hidden",current.role==="patient");
+}
+
 /* NAVIGATION */
 
 function closeForms(){
-[
-"patientForm","staffForm","bookingForm","emergencyForm",
-"medicineForm","prescriptionForm","patientHistory"
-].forEach(id=>$(id).classList.add("hidden"));
+document.querySelectorAll("#app .page").forEach(s=>{
+s.querySelectorAll("input").forEach(i=>{if(i.type!=="hidden")i.value=""});
+});
+["patientForm","staffForm","bookingForm","emergencyForm","medicineForm","prescriptionForm"].forEach(id=>{
+$(id).classList.add("hidden");
+});
 }
 
-function showPage(page){
-closeForms();
-document.querySelectorAll("main>section").forEach(x=>x.classList.add("hidden"));
-$(page).classList.remove("hidden");
+function showPage(id){
+if(!current)return;
+const button=[...document.querySelectorAll("nav button")].find(b=>b.dataset.page===id);
+if(button?.classList.contains("hidden"))return;
 
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.toggle("active",b.dataset.page===page);
-});
-renderAll();
+closeForms();
+document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+$(id).classList.remove("hidden");
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+render();
 }
 
 document.querySelectorAll("nav button").forEach(b=>{
 b.onclick=()=>showPage(b.dataset.page);
 });
-
-/* COUNTS */
-
-function updateCounts(){
-$("countPatients").textContent=patients.length;
-$("countStaff").textContent=staff.length;
-$("countBookings").textContent=bookings.filter(x=>x.date===today()).length;
-$("countEmergency").textContent=emergency.filter(x=>x.status!=="Avslutad").length;
-}
 
 /* HELPERS */
 
@@ -417,194 +473,80 @@ return patients.find(p=>p.id===id)?.name||"Okänd patient";
 function medicineName(id){
 return medicines.find(m=>m.id===id)?.name||"Okänt läkemedel";
 }
-function staffName(id){
-return staff.find(s=>s.id===id)?.name||"Ej angiven";
-}
-
-function rowButtons(type,id){
-return `<button class="btn small danger" onclick="removeItem('${type}','${id}')">Ta bort</button>`;
-}
 
 function removeItem(type,id){
-if(!confirm("Vill du ta bort denna testpost?"))return;
+if(current.role!=="admin"&&!["bookings","emergency"].includes(type))return;
+if(!confirm("Ta bort denna testpost?"))return;
 
-const lists={
-patients,staff,bookings,emergency,medicines,prescriptions
-};
+const lists={patients,staff,bookings,emergency,medicines,prescriptions};
 const list=lists[type];
 const index=list.findIndex(x=>x.id===id);
 if(index>=0)list.splice(index,1);
-
 save(type,list);
-renderAll();
+render();
 }
 
-/* PATIENTER */
-
-function renderPatients(){
-const q=$("patientSearch").value.toLowerCase();
-
-$("patientRows").innerHTML=patients.filter(p=>
-(p.name+" "+p.number).toLowerCase().includes(q)
-).map(p=>`
-<tr>
-<td>${esc(p.number)}</td>
-<td>${esc(p.name)}</td>
-<td>${esc(p.birth||"—")}</td>
-<td>${esc(p.phone||"—")}</td>
-<td>
-<button class="btn small" onclick="editPatient('${p.id}')">Ändra</button>
-<button class="btn small" onclick="showHistory('${p.id}')">Historik</button>
-${rowButtons("patients",p.id)}
-</td>
-</tr>
-`).join("");
+function deleteButton(type,id){
+return `<button class="danger small" onclick="removeItem('${type}','${id}')">Ta bort</button>`;
 }
 
-$("patientSearch").oninput=renderPatients;
+/* PATIENTS */
 
 function newPatient(){
+if(current.role!=="admin"&&current.role!=="doctor")return;
 closeForms();
 $("patientForm").classList.remove("hidden");
-$("patientData").reset();
-$("pId").value="";
-$("patientFormTitle").textContent="Registrera patient";
-}
-
-function editPatient(id){
-const p=patients.find(x=>x.id===id);
-if(!p)return;
-
-closeForms();
-$("patientForm").classList.remove("hidden");
-$("patientFormTitle").textContent="Ändra patient";
-$("pId").value=p.id;
-$("pName").value=p.name;
-$("pBirth").value=p.birth||"";
-$("pPhone").value=p.phone||"";
-$("pNumber").value=p.number||"";
-$("pNote").value=p.note||"";
 }
 
 function savePatient(){
 const name=$("pName").value.trim();
-if(!name){alert("Ange ett namn.");return}
+if(!name)return alert("Ange namn.");
 
-const id=$("pId").value||uid();
-const old=patients.find(p=>p.id===id);
-
-const item={
-id,name,
+patients.push({
+id:uid(),name,
 birth:$("pBirth").value,
-phone:$("pPhone").value.trim(),
-number:$("pNumber").value.trim()||
-old?.number||"TEST-"+Date.now().toString().slice(-6),
-note:$("pNote").value.trim()
-};
-
-if(old)patients=patients.map(p=>p.id===id?item:p);
-else patients.unshift(item);
-
+phone:$("pPhone").value,
+number:$("pNumber").value||"TEST-"+Date.now().toString().slice(-6),
+note:$("pNote").value
+});
 save("patients",patients);
 closeForms();
-renderAll();
+render();
 }
 
-/* PATIENTHISTORIK */
-
-function showHistory(id){
-const p=patients.find(x=>x.id===id);
-if(!p)return;
-
-closeForms();
-const history=prescriptions.filter(r=>r.patient===id);
-
-$("patientHistory").classList.remove("hidden");
-$("patientHistory").innerHTML=`
-<h3>Testhistorik – ${esc(p.name)}</h3>
-<p>Patientnummer: ${esc(p.number)}</p>
-<p>Antal demorecept: ${history.length}</p>
-${history.length?history.map(r=>`
-<div class="history-item">
-<strong>${esc(medicineName(r.medicine))}</strong>
-<p>Datum: ${esc(r.date)}</p>
-<p>Styrka: ${esc(r.strength||"—")}</p>
-<p>Doseringstext: ${esc(r.dose||"—")}</p>
-<p>Behandlingstid: ${esc(r.duration||"—")}</p>
-<span class="tag">Ogiltigt demorecept</span>
-</div>
-`).join(""):'<p>Ingen testhistorik registrerad.</p>'}
-<button class="btn" onclick="closeForms()">Stäng historik</button>
-`;
-}
-
-/* PERSONAL */
+/* STAFF */
 
 function newStaff(){
 closeForms();
 $("staffForm").classList.remove("hidden");
-$("staffData").reset();
-$("sId").value="";
-$("staffFormTitle").textContent="Registrera personal";
-}
-
-function editStaff(id){
-const s=staff.find(x=>x.id===id);
-if(!s)return;
-
-closeForms();
-$("staffForm").classList.remove("hidden");
-$("staffFormTitle").textContent="Ändra personal";
-$("sId").value=s.id;
-$("sName").value=s.name;
-$("sRole").value=s.role;
-$("sDepartment").value=s.department||"";
-$("sPhone").value=s.phone||"";
 }
 
 function saveStaff(){
 const name=$("sName").value.trim();
-if(!name){alert("Ange namn.");return}
+if(!name)return alert("Ange namn.");
 
-const id=$("sId").value||uid();
-const old=staff.find(x=>x.id===id);
-
-const item={
-id,name,
+staff.push({
+id:uid(),name,
 role:$("sRole").value,
-department:$("sDepartment").value,
-phone:$("sPhone").value
-};
-
-if(old)staff=staff.map(x=>x.id===id?item:x);
-else staff.push(item);
-
+department:$("sDepartment").value
+});
 save("staff",staff);
 closeForms();
-renderAll();
+render();
 }
 
-/* BOKNINGAR */
+/* BOOKINGS */
 
 function newBooking(){
-if(!patients.length){
-alert("Registrera en testpatient först.");
-return;
-}
-
+if(!patients.length)return alert("Registrera en testpatient först.");
 closeForms();
 $("bookingForm").classList.remove("hidden");
-$("bPatient").innerHTML=patients.map(p=>
-`<option value="${esc(p.id)}">${esc(p.name)}</option>`
-).join("");
-
+$("bPatient").innerHTML=patients.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("");
 $("bDate").value=today();
 $("bTime").value="09:00";
 }
 
 function saveBooking(){
-if(!$("bPatient").value){alert("Välj en patient.");return}
-
 bookings.push({
 id:uid(),
 patient:$("bPatient").value,
@@ -613,274 +555,170 @@ time:$("bTime").value,
 department:$("bDepartment").value,
 note:$("bNote").value
 });
-
 save("bookings",bookings);
 closeForms();
-renderAll();
+render();
 }
 
-/* AKUTEN */
+/* EMERGENCY */
 
 function newEmergency(){
-if(!patients.length){
-alert("Registrera en testpatient först.");
-return;
-}
-
+if(!patients.length)return alert("Registrera en testpatient först.");
 closeForms();
 $("emergencyForm").classList.remove("hidden");
-$("ePatient").innerHTML=patients.map(p=>
-`<option value="${esc(p.id)}">${esc(p.name)}</option>`
-).join("");
+$("ePatient").innerHTML=patients.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("");
 $("eDate").value=today();
 }
 
 function saveEmergency(){
-if(!$("ePatient").value)return;
-
 emergency.push({
-id:uid(),
-patient:$("ePatient").value,
+id:uid(),patient:$("ePatient").value,
 priority:$("ePriority").value,
 date:$("eDate").value,
 status:$("eStatus").value,
 note:$("eNote").value
 });
-
 save("emergency",emergency);
 closeForms();
-renderAll();
+render();
 }
 
-/* LÄKEMEDEL */
+/* MEDICINES */
 
 function newMedicine(){
 closeForms();
 $("medicineForm").classList.remove("hidden");
-$("medicineData").reset();
-$("mId").value="";
-$("medicineFormTitle").textContent="Nytt testläkemedel";
-}
-
-function editMedicine(id){
-const m=medicines.find(x=>x.id===id);
-if(!m)return;
-
-closeForms();
-$("medicineForm").classList.remove("hidden");
-$("medicineFormTitle").textContent="Ändra testläkemedel";
-$("mId").value=m.id;
-$("mName").value=m.name;
-$("mStrength").value=m.strength||"";
-$("mType").value=m.type||"Övrigt";
-$("mPackage").value=m.package||"";
-$("mDescription").value=m.description||"";
 }
 
 function saveMedicine(){
 const name=$("mName").value.trim();
-if(!name){alert("Ange läkemedlets namn.");return}
+if(!name)return alert("Ange namn.");
 
-const id=$("mId").value||uid();
-const old=medicines.find(x=>x.id===id);
-
-const item={
-id,name,
+medicines.push({
+id:uid(),name,
 strength:$("mStrength").value,
-type:$("mType").value,
-package:$("mPackage").value,
-description:$("mDescription").value
-};
-
-if(old)medicines=medicines.map(x=>x.id===id?item:x);
-else medicines.push(item);
-
+type:$("mType").value
+});
 save("medicines",medicines);
 closeForms();
-renderAll();
+render();
 }
 
-/* DEMORECEPT */
+/* DEMO PRESCRIPTIONS */
 
 function newPrescription(){
-if(!patients.length){
-alert("Registrera en testpatient först.");
-return;
-}
-if(!medicines.length){
-alert("Lägg till ett testläkemedel först.");
-return;
-}
+if(!patients.length||!medicines.length)
+return alert("Lägg till en testpatient och ett testläkemedel först.");
 
 closeForms();
 $("prescriptionForm").classList.remove("hidden");
-$("prescriptionData").reset();
-
-$("rPatient").innerHTML=patients.map(p=>
-`<option value="${esc(p.id)}">${esc(p.name)}</option>`
-).join("");
-
-$("rMedicine").innerHTML=medicines.map(m=>
-`<option value="${esc(m.id)}">${esc(m.name)} – ${esc(m.strength)}</option>`
-).join("");
-
-$("rDoctor").innerHTML=
-'<option value="">Ej angiven</option>'+
-staff.map(s=>`<option value="${esc(s.id)}">${esc(s.name)} – ${esc(s.role)}</option>`).join("");
-
+$("rPatient").innerHTML=patients.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("");
+$("rMedicine").innerHTML=medicines.map(m=>`<option value="${esc(m.id)}">${esc(m.name)}</option>`).join("");
 $("rDate").value=today();
 }
 
 function savePrescription(){
-const patient=$("rPatient").value;
-const medicine=$("rMedicine").value;
-
-if(!patient||!medicine){
-alert("Välj patient och läkemedel.");
-return;
-}
-
-const item={
+prescriptions.unshift({
 id:uid(),
-date:$("rDate").value||today(),
-patient,
-medicine,
-strength:$("rStrength").value,
+patient:$("rPatient").value,
+medicine:$("rMedicine").value,
 dose:$("rDose").value,
-duration:$("rDuration").value,
-quantity:$("rQuantity").value,
-doctor:$("rDoctor").value,
-note:$("rNote").value,
-status:"Ogiltigt demorecept"
-};
-
-prescriptions.unshift(item);
+date:$("rDate").value||today(),
+status:"OGILTIGT DEMORECEPT"
+});
 save("prescriptions",prescriptions);
 closeForms();
-renderAll();
-
-alert("Demoreceptet har sparats. Det är inte ett giltigt recept.");
+render();
+alert("Demorecept sparat. Detta är inte ett giltigt recept.");
 }
 
-/* UTSKRIFT */
+/* PATIENT VIEW */
 
-function printPrescription(id){
-const r=prescriptions.find(x=>x.id===id);
-if(!r)return;
+function renderMyPage(){
+const patientId=current.patientId;
+const p=patients.find(x=>x.number===patientId);
 
-const w=window.open("","_blank");
-if(!w){
-alert("Tillåt popup-fönster för utskrift.");
+if(!p){
+$("patientDetails").innerHTML="<p>Inga testuppgifter har registrerats för detta konto ännu.</p>";
+$("myBookings").innerHTML="";
+$("myHistory").innerHTML="";
 return;
 }
 
-w.document.write(`
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-<meta charset="UTF-8">
-<title>Demorecept</title>
-<style>
-body{font-family:Arial;padding:30px;color:#203247}
-.warning{border:3px solid #b42318;padding:15px;color:#b42318;font-weight:bold;text-align:center}
-h1{color:#153f68}
-</style>
-</head>
-<body>
-<h1>SjukhusSystem Sverige</h1>
-<div class="warning">
-OGILTIGT DEMORECEPT<br>
-EJ FÖR MEDICINSK ANVÄNDNING
-</div>
-<h2>Patient: ${esc(patientName(r.patient))}</h2>
-<p>Datum: ${esc(r.date)}</p>
-<p>Läkemedel: ${esc(medicineName(r.medicine))}</p>
-<p>Styrka: ${esc(r.strength)}</p>
-<p>Demotext dosering: ${esc(r.dose)}</p>
-<p>Behandlingstid: ${esc(r.duration)}</p>
-<p>Förpackningar: ${esc(r.quantity)}</p>
-<p>Personal: ${esc(staffName(r.doctor))}</p>
-<p>Kommentar: ${esc(r.note)}</p>
-<hr>
-<p><strong>Detta dokument är endast för demonstration.</strong></p>
-</body>
-</html>
-`);
+$("patientDetails").innerHTML=`
+<p><strong>Namn:</strong> ${esc(p.name)}</p>
+<p><strong>Patientnummer:</strong> ${esc(p.number)}</p>
+<p><strong>Födelsedatum:</strong> ${esc(p.birth)}</p>
+`;
 
-w.document.close();
-w.print();
+$("myBookings").innerHTML=bookings.filter(b=>b.patient===p.id).map(b=>
+`<div class="panel"><strong>${esc(b.date)}</strong><p>${esc(b.time)} – ${esc(b.department)}</p></div>`
+).join("")||"Inga bokningar.";
+
+$("myHistory").innerHTML=prescriptions.filter(r=>r.patient===p.id).map(r=>
+`<div class="panel">${esc(medicineName(r.medicine))}<p>${esc(r.date)}</p><span class="tag">Ogiltigt demorecept</span></div>`
+).join("")||"Ingen testhistorik.";
 }
 
-/* VISA ALLA TABELLER */
+/* RENDER */
 
-function renderAll(){
+function render(){
+if(!current)return;
 
-renderPatients();
+$("countPatients").textContent=patients.length;
+$("countStaff").textContent=staff.length;
+$("countBookings").textContent=bookings.filter(b=>b.date===today()).length;
+$("countEmergency").textContent=emergency.filter(e=>e.status!=="Avslutad").length;
+
+const q=($("patientSearch").value||"").toLowerCase();
+
+$("patientRows").innerHTML=patients.filter(p=>
+(p.name+" "+p.number).toLowerCase().includes(q)
+).map(p=>`
+<tr>
+<td>${esc(p.number)}</td>
+<td>${esc(p.name)}</td>
+<td>${esc(p.birth)}</td>
+<td>${esc(p.phone)}</td>
+<td>${deleteButton("patients",p.id)}</td>
+</tr>`).join("");
 
 $("staffRows").innerHTML=staff.map(s=>`
-<tr>
-<td>${esc(s.name)}</td>
-<td>${esc(s.role)}</td>
-<td>${esc(s.department)}</td>
-<td>
-<button class="btn small" onclick="editStaff('${s.id}')">Ändra</button>
-${rowButtons("staff",s.id)}
-</td>
-</tr>
+<tr><td>${esc(s.name)}</td><td>${esc(s.role)}</td>
+<td>${esc(s.department)}</td><td>${deleteButton("staff",s.id)}</td></tr>
 `).join("");
 
-$("bookingRows").innerHTML=bookings.map(b=>`
-<tr>
-<td>${esc(patientName(b.patient))}</td>
-<td>${esc(b.date)}</td>
-<td>${esc(b.time)}</td>
+$("bookingRows").innerHTML=bookings.filter(b=>
+current.role!=="patient"||patients.find(p=>p.id===b.patient)?.number===current.patientId
+).map(b=>`
+<tr><td>${esc(patientName(b.patient))}</td>
+<td>${esc(b.date)}</td><td>${esc(b.time)}</td>
 <td>${esc(b.department)}</td>
-<td>${rowButtons("bookings",b.id)}</td>
-</tr>
+<td>${deleteButton("bookings",b.id)}</td></tr>
 `).join("");
 
 $("emergencyRows").innerHTML=emergency.map(e=>`
-<tr>
-<td>${esc(patientName(e.patient))}</td>
-<td>${esc(e.priority)}</td>
-<td>${esc(e.date)}</td>
-<td>${esc(e.status)}</td>
-<td>${rowButtons("emergency",e.id)}</td>
-</tr>
+<tr><td>${esc(patientName(e.patient))}</td>
+<td>${esc(e.priority)}</td><td>${esc(e.date)}</td>
+<td>${esc(e.status)}</td><td>${deleteButton("emergency",e.id)}</td></tr>
 `).join("");
 
 $("medicineRows").innerHTML=medicines.map(m=>`
-<tr>
-<td>${esc(m.name)}</td>
-<td>${esc(m.strength)}</td>
-<td>${esc(m.type)}</td>
-<td>${esc(m.package)}</td>
-<td>
-<button class="btn small" onclick="editMedicine('${m.id}')">Ändra</button>
-${rowButtons("medicines",m.id)}
-</td>
-</tr>
+<tr><td>${esc(m.name)}</td><td>${esc(m.strength)}</td>
+<td>${esc(m.type)}</td><td>${deleteButton("medicines",m.id)}</td></tr>
 `).join("");
 
 $("prescriptionRows").innerHTML=prescriptions.map(r=>`
-<tr>
-<td>${esc(r.date)}</td>
+<tr><td>${esc(r.date)}</td>
 <td>${esc(patientName(r.patient))}</td>
 <td>${esc(medicineName(r.medicine))}</td>
-<td>${esc(staffName(r.doctor))}</td>
 <td><span class="tag">Ogiltigt demorecept</span></td>
-<td>
-<button class="btn small" onclick="printPrescription('${r.id}')">Skriv ut</button>
-${rowButtons("prescriptions",r.id)}
-</td>
-</tr>
+<td>${deleteButton("prescriptions",r.id)}</td></tr>
 `).join("");
 
-updateCounts();
+renderMyPage();
 }
 
-renderAll();
 </script>
-
 </body>
 </html>
