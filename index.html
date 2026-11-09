@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta name="google-site-verification" content="-HQDOEy6hx5dUmbRlHC_GJcaxxv9HZAyemDw-pL1Z8k" />
 <meta charset="UTF-8">
+
+<meta name="google-site-verification" content="-HQDOEy6hx5dUmbRlHC_GJcaxxv9HZAyemDw-pL1Z8k" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#153f68">
 <title>SjukhusSystem Sverige</title>
@@ -110,7 +112,7 @@ import { createClient } from
 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const SUPABASE_URL = 'https://ysddqwzrypohnfyrpynu.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_tGEZ0WQMWGK3Hj4CMdtAxQ_7AiJHbiR';
+const SUPABASE_KEY = 'sb_publishable_tGE0WQMWGK3Hj4CMdtAx_7AiJHbiR';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -193,7 +195,6 @@ async function loadData() {
       ] = results;
 
     } else {
-      // Patienter hämtar endast sina egna uppgifter.
       const results = await Promise.all([
         rows('demo_patients'),
         rows('demo_bookings'),
@@ -286,10 +287,7 @@ async function registerPatient() {
   }
 }
 
-/* STARTA SYSTEMET
-   Patienter hämtas från demo_patients.
-   Endast läkare och administratörer behöver profiles.
-*/
+/* STARTA SYSTEMET */
 async function startApp(user) {
   current = user;
   profile = null;
@@ -306,7 +304,6 @@ async function startApp(user) {
     profile = staffProfile;
 
   } else {
-    // Användaren är patient.
     let {data:patient,error:patientError} = await supabase
       .from('demo_patients')
       .select('*')
@@ -315,7 +312,6 @@ async function startApp(user) {
 
     if(patientError) throw patientError;
 
-    // Skapa patientpost om den inte redan finns.
     if(!patient) {
       const name = user.user_metadata?.full_name || user.email;
 
@@ -429,8 +425,6 @@ function showPage(name) {
   };
 
   if(!pages[name]) return;
-
-  // Patienter får inte öppna personalens sidor.
   if(!isStaff() && !['home','mine'].includes(name)) return;
 
   $('page').innerHTML = pages[name]();
@@ -545,37 +539,23 @@ function list(items,format) {
 function patientsPage() {
   return `
   <h2>Patienter</h2>
-
   <div class="panel">
     <h3>Registrera fiktiv patient</h3>
-
-    <label>Namn</label>
-    <input id="pName">
-
-    <label>Födelsedatum</label>
-    <input id="pBirth" type="date">
-
-    <label>Telefon</label>
-    <input id="pPhone">
-
-    <label>Anteckning</label>
-    <textarea id="pNote"></textarea>
-
+    <label>Namn</label><input id="pName">
+    <label>Födelsedatum</label><input id="pBirth" type="date">
+    <label>Telefon</label><input id="pPhone">
+    <label>Anteckning</label><textarea id="pNote"></textarea>
     <button class="primary" onclick="addPatient()">Spara patient</button>
   </div>
-
   <div class="panel">
     <h3>Patientlista</h3>
-    ${list(patients,p =>
-      `${p.full_name} – ${p.patient_number || ''} – ${p.phone || ''}`
-    )}
+    ${list(patients,p => `${p.full_name} – ${p.patient_number || ''} – ${p.phone || ''}`)}
   </div>`;
 }
 
 async function addPatient() {
   try {
     const name = $('pName').value.trim();
-
     if(!name) return msg('Skriv patientens namn.','error');
 
     await addRow('demo_patients',{
@@ -589,50 +569,31 @@ async function addPatient() {
     await loadData();
     showPage('patients');
     msg('Patienten har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* BOKNINGAR */
 function bookingsPage() {
   return `
   <h2>Bokningar</h2>
-
   <div class="panel">
     <h3>Skapa bokning</h3>
-
-    <label>Patient</label>
-    <select id="bPatient">${patientOptions()}</select>
-
-    <label>Datum</label>
-    <input type="date" id="bDate">
-
-    <label>Tid</label>
-    <input type="time" id="bTime">
-
-    <label>Avdelning</label>
-    <input id="bDepartment">
-
-    <label>Information</label>
-    <textarea id="bNote"></textarea>
-
+    <label>Patient</label><select id="bPatient">${patientOptions()}</select>
+    <label>Datum</label><input type="date" id="bDate">
+    <label>Tid</label><input type="time" id="bTime">
+    <label>Avdelning</label><input id="bDepartment">
+    <label>Information</label><textarea id="bNote"></textarea>
     <button class="primary" onclick="addBooking()">Spara bokning</button>
   </div>
-
   <div class="panel">
     <h3>Alla bokningar</h3>
-    ${list(bookings,b =>
-      `${patientName(b.patient_id)} – ${b.booking_date} ${b.booking_time || ''} – ${b.department || ''}`
-    )}
+    ${list(bookings,b => `${patientName(b.patient_id)} – ${b.booking_date} ${b.booking_time || ''} – ${b.department || ''}`)}
   </div>`;
 }
 
 async function addBooking() {
   try {
     if(!$('bPatient').value) return msg('Välj en patient.','error');
-
     await addRow('demo_bookings',{
       patient_id:$('bPatient').value,
       booking_date:$('bDate').value,
@@ -640,39 +601,25 @@ async function addBooking() {
       department:$('bDepartment').value,
       note:$('bNote').value
     });
-
     await loadData();
     showPage('bookings');
     msg('Bokningen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* PERSONAL */
 function staffPage() {
   return `
   <h2>Personal</h2>
-
   <div class="panel">
-    <label>Namn</label>
-    <input id="sName">
-
-    <label>Yrkesroll</label>
-    <input id="sJob">
-
-    <label>Avdelning</label>
-    <input id="sDept">
-
+    <label>Namn</label><input id="sName">
+    <label>Yrkesroll</label><input id="sJob">
+    <label>Avdelning</label><input id="sDept">
     <button class="primary" onclick="addStaff()">Spara personal</button>
   </div>
-
   <div class="panel">
     <h3>Personalregister</h3>
-    ${list(staff,s =>
-      `${s.full_name} – ${s.job_title || ''} – ${s.department || ''}`
-    )}
+    ${list(staff,s => `${s.full_name} – ${s.job_title || ''} – ${s.department || ''}`)}
   </div>`;
 }
 
@@ -683,52 +630,32 @@ async function addStaff() {
       job_title:$('sJob').value,
       department:$('sDept').value
     });
-
     await loadData();
     showPage('staff');
     msg('Personalen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* PROVBESTÄLLNINGAR */
 function labsPage() {
   return `
   <h2>Provbeställningar</h2>
-
   <div class="panel">
     <h3>Ny provbeställning</h3>
-
-    <label>Patient</label>
-    <select id="lPatient">${patientOptions()}</select>
-
-    <label>Provtagningsnamn</label>
-    <input id="lTest" placeholder="Exempel: Blodprov">
-
-    <label>Avdelning</label>
-    <input id="lDept">
-
-    <label>Instruktioner</label>
-    <textarea id="lInstructions"></textarea>
-
+    <label>Patient</label><select id="lPatient">${patientOptions()}</select>
+    <label>Provtagningsnamn</label><input id="lTest" placeholder="Exempel: Blodprov">
+    <label>Avdelning</label><input id="lDept">
+    <label>Instruktioner</label><textarea id="lInstructions"></textarea>
     <label>Status</label>
     <select id="lStatus">
-      <option>Beställd</option>
-      <option>Prov taget</option>
-      <option>Svar klart</option>
-      <option>Avbruten</option>
+      <option>Beställd</option><option>Prov taget</option>
+      <option>Svar klart</option><option>Avbruten</option>
     </select>
-
     <button class="primary" onclick="addLabOrder()">Skapa beställning</button>
   </div>
-
   <div class="panel">
     <h3>Beställningar</h3>
-    ${list(labOrders,x =>
-      `${patientName(x.patient_id)} – ${x.test_name} – ${x.status || ''}`
-    )}
+    ${list(labOrders,x => `${patientName(x.patient_id)} – ${x.test_name} – ${x.status || ''}`)}
   </div>`;
 }
 
@@ -743,56 +670,31 @@ async function addLabOrder() {
       status:$('lStatus').value,
       ordered_at:new Date().toISOString()
     });
-
     await loadData();
     showPage('labs');
     msg('Provbeställningen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* PROVSVAR */
 function resultsPage() {
   return `
   <h2>Provsvar</h2>
-
   <div class="panel">
     <h3>Registrera fiktivt provsvar</h3>
-
-    <label>Patient</label>
-    <select id="rPatient">${patientOptions()}</select>
-
-    <label>Provnamn</label>
-    <input id="rTest">
-
-    <label>Resultat</label>
-    <input id="rValue">
-
-    <label>Referensintervall</label>
-    <input id="rRange">
-
-    <label>Enhet</label>
-    <input id="rUnit">
-
-    <label>Kommentar</label>
-    <textarea id="rComment"></textarea>
-
+    <label>Patient</label><select id="rPatient">${patientOptions()}</select>
+    <label>Provnamn</label><input id="rTest">
+    <label>Resultat</label><input id="rValue">
+    <label>Referensintervall</label><input id="rRange">
+    <label>Enhet</label><input id="rUnit">
+    <label>Kommentar</label><textarea id="rComment"></textarea>
     <label>Status</label>
-    <select id="rStatus">
-      <option>Klart</option>
-      <option>Under granskning</option>
-    </select>
-
+    <select id="rStatus"><option>Klart</option><option>Under granskning</option></select>
     <button class="primary" onclick="addResult()">Spara provsvar</button>
   </div>
-
   <div class="panel">
     <h3>Registrerade provsvar</h3>
-    ${list(labResults,x =>
-      `${patientName(x.patient_id)} – ${x.test_name}: ${x.result_value} ${x.unit || ''}`
-    )}
+    ${list(labResults,x => `${patientName(x.patient_id)} – ${x.test_name}: ${x.result_value} ${x.unit || ''}`)}
   </div>`;
 }
 
@@ -808,52 +710,32 @@ async function addResult() {
       status:$('rStatus').value,
       entered_by:current.id
     });
-
     await loadData();
     showPage('results');
     msg('Provsvar har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* LÄKARBEDÖMNINGAR */
 function decisionsPage() {
   return `
   <h2>Läkarbedömningar</h2>
-
   <div class="panel">
     <h3>Registrera bedömning</h3>
-
-    <label>Patient</label>
-    <select id="dPatient">${patientOptions()}</select>
-
+    <label>Patient</label><select id="dPatient">${patientOptions()}</select>
     <label>Provsvar</label>
     <select id="dResult">
       <option value="">Inget valt</option>
-      ${labResults.map(r =>
-        `<option value="${esc(r.id)}">${esc(r.test_name)} – ${esc(patientName(r.patient_id))}</option>`
-      ).join('')}
+      ${labResults.map(r => `<option value="${esc(r.id)}">${esc(r.test_name)} – ${esc(patientName(r.patient_id))}</option>`).join('')}
     </select>
-
-    <label>Beslut</label>
-    <textarea id="dDecision"></textarea>
-
-    <label>Bedömning</label>
-    <textarea id="dAssessment"></textarea>
-
-    <label>Handlingsplan</label>
-    <textarea id="dPlan"></textarea>
-
+    <label>Beslut</label><textarea id="dDecision"></textarea>
+    <label>Bedömning</label><textarea id="dAssessment"></textarea>
+    <label>Handlingsplan</label><textarea id="dPlan"></textarea>
     <button class="primary" onclick="addDecision()">Spara bedömning</button>
   </div>
-
   <div class="panel">
     <h3>Registrerade bedömningar</h3>
-    ${list(decisions,x =>
-      `${patientName(x.patient_id)} – ${x.decision} – ${x.assessment} – ${x.action_plan}`
-    )}
+    ${list(decisions,x => `${patientName(x.patient_id)} – ${x.decision} – ${x.assessment} – ${x.action_plan}`)}
   </div>`;
 }
 
@@ -867,42 +749,26 @@ async function addDecision() {
       assessment:$('dAssessment').value,
       action_plan:$('dPlan').value
     });
-
     await loadData();
     showPage('decisions');
     msg('Bedömningen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* ANTECKNINGAR */
 function notesPage() {
   return `
   <h2>Journalanteckningar</h2>
-
   <div class="panel">
-    <label>Patient</label>
-    <select id="nPatient">${patientOptions()}</select>
-
-    <label>Typ av anteckning</label>
-    <input id="nType" placeholder="Exempel: Samtal">
-
-    <label>Rubrik</label>
-    <input id="nTitle">
-
-    <label>Innehåll</label>
-    <textarea id="nContent"></textarea>
-
+    <label>Patient</label><select id="nPatient">${patientOptions()}</select>
+    <label>Typ av anteckning</label><input id="nType" placeholder="Exempel: Samtal">
+    <label>Rubrik</label><input id="nTitle">
+    <label>Innehåll</label><textarea id="nContent"></textarea>
     <button class="primary" onclick="addNote()">Spara anteckning</button>
   </div>
-
   <div class="panel">
     <h3>Anteckningar</h3>
-    ${list(notes,x =>
-      `${patientName(x.patient_id)} – ${x.note_type || ''} – ${x.title}: ${x.content}`
-    )}
+    ${list(notes,x => `${patientName(x.patient_id)} – ${x.note_type || ''} – ${x.title}: ${x.content}`)}
   </div>`;
 }
 
@@ -915,46 +781,27 @@ async function addNote() {
       title:$('nTitle').value,
       content:$('nContent').value
     });
-
     await loadData();
     showPage('notes');
     msg('Anteckningen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* REMISSER */
 function referralsPage() {
   return `
   <h2>Remisser</h2>
-
   <div class="panel">
-    <label>Patient</label>
-    <select id="fPatient">${patientOptions()}</select>
-
-    <label>Avdelning</label>
-    <input id="fDept">
-
-    <label>Orsak</label>
-    <textarea id="fReason"></textarea>
-
+    <label>Patient</label><select id="fPatient">${patientOptions()}</select>
+    <label>Avdelning</label><input id="fDept">
+    <label>Orsak</label><textarea id="fReason"></textarea>
     <label>Status</label>
-    <select id="fStatus">
-      <option>Skapad</option>
-      <option>Skickad</option>
-      <option>Besvarad</option>
-    </select>
-
+    <select id="fStatus"><option>Skapad</option><option>Skickad</option><option>Besvarad</option></select>
     <button class="primary" onclick="addReferral()">Skapa remiss</button>
   </div>
-
   <div class="panel">
     <h3>Remisslista</h3>
-    ${list(referrals,x =>
-      `${patientName(x.patient_id)} – ${x.department} – ${x.reason} – ${x.status || ''}`
-    )}
+    ${list(referrals,x => `${patientName(x.patient_id)} – ${x.department} – ${x.reason} – ${x.status || ''}`)}
   </div>`;
 }
 
@@ -967,39 +814,25 @@ async function addReferral() {
       reason:$('fReason').value,
       status:$('fStatus').value
     });
-
     await loadData();
     showPage('referrals');
     msg('Remissen har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* LÄKEMEDEL */
 function medicinesPage() {
   return `
   <h2>Läkemedel</h2>
-
   <div class="panel">
-    <label>Namn</label>
-    <input id="mName">
-
-    <label>Styrka</label>
-    <input id="mStrength">
-
-    <label>Typ</label>
-    <input id="mType">
-
+    <label>Namn</label><input id="mName">
+    <label>Styrka</label><input id="mStrength">
+    <label>Typ</label><input id="mType">
     <button class="primary" onclick="addMedicine()">Spara läkemedel</button>
   </div>
-
   <div class="panel">
     <h3>Register</h3>
-    ${list(medicines,x =>
-      `${x.name} – ${x.strength || ''} – ${x.medicine_type || ''}`
-    )}
+    ${list(medicines,x => `${x.name} – ${x.strength || ''} – ${x.medicine_type || ''}`)}
   </div>`;
 }
 
@@ -1010,59 +843,34 @@ async function addMedicine() {
       strength:$('mStrength').value,
       medicine_type:$('mType').value
     });
-
     await loadData();
     showPage('medicines');
     msg('Läkemedlet har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* RECEPT – ENDAST FIKTIVA ÖVNINGSUPPGIFTER */
 function prescriptionsPage() {
   return `
   <h2>Recept – övning</h2>
-
   <div class="notice">
     Detta är endast en fiktiv övningsfunktion. Inga riktiga recept skapas.
   </div>
-
   <div class="panel">
-    <label>Patient</label>
-    <select id="rxPatient">${patientOptions()}</select>
-
+    <label>Patient</label><select id="rxPatient">${patientOptions()}</select>
     <label>Läkemedel</label>
     <select id="rxMedicine">
-      ${medicines.map(m =>
-        `<option value="${esc(m.id)}">${esc(m.name)} – ${esc(m.strength || '')}</option>`
-      ).join('')}
+      ${medicines.map(m => `<option value="${esc(m.id)}">${esc(m.name)} – ${esc(m.strength || '')}</option>`).join('')}
     </select>
-
-    <label>Dosering (övning)</label>
-    <input id="rxDosage">
-
-    <label>Behandlingstid (övning)</label>
-    <input id="rxDuration">
-
-    <label>Antal</label>
-    <input id="rxQuantity" type="number">
-
-    <label>Status</label>
-    <select id="rxStatus">
-      <option>Utkast</option>
-      <option>Avslutat</option>
-    </select>
-
+    <label>Dosering (övning)</label><input id="rxDosage">
+    <label>Behandlingstid (övning)</label><input id="rxDuration">
+    <label>Antal</label><input id="rxQuantity" type="number">
+    <label>Status</label><select id="rxStatus"><option>Utkast</option><option>Avslutat</option></select>
     <button class="primary" onclick="addPrescription()">Spara övningspost</button>
   </div>
-
   <div class="panel">
     <h3>Övningsregister</h3>
-    ${list(prescriptions,x =>
-      `${patientName(x.patient_id)} – ${medicines.find(m => m.id === x.medicine_id)?.name || 'Läkemedel'} – ${x.status || ''}`
-    )}
+    ${list(prescriptions,x => `${patientName(x.patient_id)} – ${medicines.find(m => m.id === x.medicine_id)?.name || 'Läkemedel'} – ${x.status || ''}`)}
   </div>`;
 }
 
@@ -1080,14 +888,10 @@ async function addPrescription() {
       quantity:Number($('rxQuantity').value),
       status:$('rxStatus').value
     });
-
     await loadData();
     showPage('prescriptions');
     msg('Övningsposten har sparats.');
-
-  } catch(e) {
-    fail(e);
-  }
+  } catch(e) { fail(e); }
 }
 
 /* GÖR FUNKTIONER TILLGÄNGLIGA FÖR KNAPPARNA */
