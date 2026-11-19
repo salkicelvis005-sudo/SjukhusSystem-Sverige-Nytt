@@ -3,12 +3,16 @@
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9557220175672405"
      crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="-HQDOEy6hx5dUmbRlHC_GJcaxxv9HZAyemDw-pL1Z8k">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#153f68">
-<meta name="description" content="SjukhusSystem Sverige är ett fiktivt digitalt övningssystem för att lära sig om patientregister, bokningar och sjukhusadministration.">
-<title>SjukhusSystem Sverige – Digitalt övningssystem</title>
+
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="-HQDOEy6hx5dUmbRlHC_GJcaxxv9HZAyemDw-pL1Z8k">
+  <meta name="google-adsense-account" content="ca-pub-9557220175672405">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153f68">
+  <meta name="description" content="SjukhusSystem Sverige är ett fiktivt digitalt övningssystem för att lära sig om patientregister, bokningar och sjukhusadministration.">
+  <title>SjukhusSystem Sverige – Digitalt övningssystem</title>
+
 <style>
 :root{--navy:#153f68;--blue:#246da2;--bg:#f1f5fa;--ink:#203247;--muted:#68798b;--line:#dce5ee}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
@@ -20,53 +24,531 @@ main{max-width:1120px;margin:auto;padding:22px 16px}.hero{background:linear-grad
 @media(max-width:650px){.header-inner{align-items:flex-start}nav.public-nav{width:100%}nav.public-nav a{padding:7px 8px;font-size:14px}main{padding:14px 10px}.hero{padding:28px 19px}.section,.panel{padding:17px}#appPanel nav button{flex:1}}
 </style>
 </head>
+
 <body>
-<header><div class="header-inner"><a class="brand" href="#" onclick="showPublicPage('home');return false">✚ SjukhusSystem Sverige</a><nav class="public-nav" aria-label="Huvudmeny"><a href="#start" onclick="showPublicPage('home')">Start</a><a href="#funktioner" onclick="showPublicPage('home')">Funktioner</a><a href="#om" onclick="showPublicPage('about')">Om projektet</a><a href="#kontakt" onclick="showPublicPage('contact')">Kontakt</a><button class="primary" onclick="openLogin()">Logga in</button></nav></div></header>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#" onclick="showPublicPage('home');return false">✚ SjukhusSystem Sverige</a>
+    <nav class="public-nav" aria-label="Huvudmeny">
+      <a href="#start" onclick="showPublicPage('home')">Start</a>
+      <a href="#funktioner" onclick="showPublicPage('home')">Funktioner</a>
+      <a href="#om" onclick="showPublicPage('about')">Om projektet</a>
+      <a href="#kontakt" onclick="showPublicPage('contact')">Kontakt</a>
+      <button class="primary" onclick="openLogin()">Logga in</button>
+    </nav>
+  </div>
+</header>
+
 <main>
 <div id="publicPages">
-<section id="publicHome" class="page-content"><div class="hero" id="start"><span class="pill">Fiktivt utbildnings- och övningsprojekt</span><h1>Välkommen till SjukhusSystem Sverige</h1><p>Ett digitalt demonstrationssystem som visar hur administrativa delar i en vårdverksamhet kan organiseras – från patientregister och bokningar till personal och övningsdata.</p><button class="primary" onclick="openLogin()">Öppna övningssystemet</button> <a class="button secondary" href="#funktioner">Läs om funktionerna</a></div>
-<div class="notice"><strong>Viktigt om användningen:</strong> SjukhusSystem Sverige är endast ett fiktivt övningssystem. Använd bara påhittade personer och uppgifter. Systemet är inte avsett för riktig vård, diagnoser, behandling, journalföring eller hantering av verkliga patientuppgifter.</div>
-<section class="section" id="funktioner"><h2>Vad kan man öva på?</h2><p>Demonstrationen samlar exempel på administrativa funktioner i en webbapplikation.</p><div class="grid"><article class="feature"><h3>Patientregister</h3><p>Öva på att skapa och visa fiktiva patientposter och registeruppgifter.</p></article><article class="feature"><h3>Bokningar</h3><p>Se hur fiktiva besök kan registreras med datum, tid och avdelning.</p></article><article class="feature"><h3>Personalregister</h3><p>Demonstrera hur namn, yrkesroller och avdelningar kan visas.</p></article><article class="feature"><h3>Provflöden</h3><p>Utforska exempel på provbeställningar och fiktiva provsvar.</p></article><article class="feature"><h3>Remisser och anteckningar</h3><p>Visa exempel på administrativa arbetsflöden med påhittat innehåll.</p></article><article class="feature"><h3>Övningsregister</h3><p>Testa gränssnitt och funktioner utan att använda systemet för verklig vård.</p></article></div></section>
-<section class="section"><h2>Så fungerar demonstrationen</h2><ol><li>Öppna övningssystemet via knappen Logga in.</li><li>Skapa ett övningskonto eller logga in med ett befintligt konto.</li><li>Använd endast påhittade uppgifter när du testar funktionerna.</li></ol><p class="muted">Vissa funktioner kräver att databasen och användarbehörigheterna är korrekt konfigurerade.</p><button class="primary" onclick="openLogin()">Gå till övningssystemet</button></section></section>
-<section id="publicAbout" class="section page-content hidden"><h1>Om SjukhusSystem Sverige</h1><p>SjukhusSystem Sverige är ett fristående demonstrationsprojekt som visar ett möjligt upplägg för ett digitalt administrativt gränssnitt. Projektet demonstrerar webbdesign, formulär, register och exempel på administrativa arbetsflöden.</p><h2>Syfte</h2><p>Syftet är att ge en översiktlig och praktisk demonstration av hur olika delar i ett administrativt system kan organiseras på en webbplats.</p><h2>Viktig begränsning</h2><p>Detta är inte ett godkänt journalsystem eller ett medicinskt verktyg. Det får inte användas för verkliga patientuppgifter, vårdbeslut, diagnoser, behandlingar, recept eller annan faktisk vårdverksamhet. Alla exempel ska vara helt fiktiva.</p><button class="primary" onclick="showPublicPage('home')">Till startsidan</button></section>
-<section id="publicContact" class="section page-content hidden"><h1>Kontakt</h1><p>Har du frågor om demonstrationsprojektet SjukhusSystem Sverige kan du kontakta projektansvarig via den kontaktadress som webbplatsägaren själv väljer att publicera här.</p><p><strong>Kontakt via e-post:</strong> Lägg till en e-postadress som du själv kontrollerar innan du publicerar webbplatsen.</p><p class="muted">Ingen kontaktadress har lagts in automatiskt eftersom vi inte ska hitta på en e-postadress.</p><button class="primary" onclick="showPublicPage('home')">Till startsidan</button></section>
-<section id="publicPrivacy" class="section page-content hidden"><h1>Integritetspolicy</h1><p>Den här webbplatsen innehåller en demonstration med inloggning och databasfunktioner. Webbplatsägaren behöver beskriva vilka uppgifter som samlas in, varför de behandlas, hur länge de sparas och hur användare kan kontakta webbplatsägaren.</p><h2>Övningsdata</h2><p>Använd endast påhittade uppgifter i demonstrationssystemet. Ange aldrig riktiga patientuppgifter, personnummer, hälsouppgifter eller andra känsliga personuppgifter.</p><h2>Inloggning och databas</h2><p>Inloggning och lagring hanteras via den anslutna databastjänsten Supabase. Webbplatsägaren ansvarar för att konfigurera behörigheter, säkerhet, lagring och information till användare korrekt.</p><h2>Cookies och annonser</h2><p>Om webbplatsen senare använder analysverktyg, annonser eller andra tjänster som använder cookies eller liknande teknik måste denna policy uppdateras med korrekt information. Nödvändiga samtycken ska inhämtas där lagen kräver det.</p><h2>Innan publicering</h2><p>Denna text är en grundmall och inte juridisk rådgivning. Webbplatsägaren måste komplettera den så att den stämmer med den faktiska behandlingen av uppgifter och tillämpliga regler.</p><button class="primary" onclick="showPublicPage('home')">Till startsidan</button></section>
+
+<section id="publicHome" class="page-content">
+  <div class="hero" id="start">
+    <span class="pill">Fiktivt utbildnings- och övningsprojekt</span>
+    <h1>Välkommen till SjukhusSystem Sverige</h1>
+    <p>Ett digitalt demonstrationssystem som visar hur administrativa delar i en vårdverksamhet kan organiseras – från patientregister och bokningar till personal och övningsdata.</p>
+    <button class="primary" onclick="openLogin()">Öppna övningssystemet</button>
+    <a class="button secondary" href="#funktioner">Läs om funktionerna</a>
+  </div>
+
+  <div class="notice">
+    <strong>Viktigt om användningen:</strong> SjukhusSystem Sverige är endast ett fiktivt övningssystem. Använd bara påhittade personer och uppgifter. Systemet är inte avsett för riktig vård, diagnoser, behandling, journalföring eller hantering av verkliga patientuppgifter.
+  </div>
+
+  <section class="section" id="funktioner">
+    <h2>Vad kan man öva på?</h2>
+    <p>Demonstrationen samlar exempel på administrativa funktioner i en webbapplikation.</p>
+    <div class="grid">
+      <article class="feature"><h3>Patientregister</h3><p>Öva på att skapa och visa fiktiva patientposter och registeruppgifter.</p></article>
+      <article class="feature"><h3>Bokningar</h3><p>Se hur fiktiva besök kan registreras med datum, tid och avdelning.</p></article>
+      <article class="feature"><h3>Personalregister</h3><p>Demonstrera hur namn, yrkesroller och avdelningar kan visas.</p></article>
+      <article class="feature"><h3>Provflöden</h3><p>Utforska exempel på provbeställningar och fiktiva provsvar.</p></article>
+      <article class="feature"><h3>Remisser och anteckningar</h3><p>Visa exempel på administrativa arbetsflöden med påhittat innehåll.</p></article>
+      <article class="feature"><h3>Övningsregister</h3><p>Testa gränssnitt och funktioner utan att använda systemet för verklig vård.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Så fungerar demonstrationen</h2>
+    <ol>
+      <li>Öppna övningssystemet via knappen Logga in.</li>
+      <li>Skapa ett övningskonto eller logga in med ett befintligt konto.</li>
+      <li>Använd endast påhittade uppgifter när du testar funktionerna.</li>
+    </ol>
+    <p class="muted">Vissa funktioner kräver att databasen och användarbehörigheterna är korrekt konfigurerade.</p>
+    <button class="primary" onclick="openLogin()">Gå till övningssystemet</button>
+  </section>
+</section>
+
+<section id="publicAbout" class="section page-content hidden">
+  <h1>Om SjukhusSystem Sverige</h1>
+  <p>SjukhusSystem Sverige är ett fristående demonstrationsprojekt som visar ett möjligt upplägg för ett digitalt administrativt gränssnitt. Projektet demonstrerar webbdesign, formulär, register och exempel på administrativa arbetsflöden.</p>
+  <h2>Syfte</h2>
+  <p>Syftet är att ge en översiktlig och praktisk demonstration av hur olika delar i ett administrativt system kan organiseras på en webbplats.</p>
+  <h2>Viktig begränsning</h2>
+  <p>Detta är inte ett godkänt journalsystem eller ett medicinskt verktyg. Det får inte användas för verkliga patientuppgifter, vårdbeslut, diagnoser, behandlingar, recept eller annan faktisk vårdverksamhet. Alla exempel ska vara helt fiktiva.</p>
+  <button class="primary" onclick="showPublicPage('home')">Till startsidan</button>
+</section>
+
+<section id="publicContact" class="section page-content hidden">
+  <h1>Kontakt</h1>
+  <p>Har du frågor om demonstrationsprojektet SjukhusSystem Sverige kan du kontakta projektansvarig via den kontaktadress som webbplatsägaren själv väljer att publicera här.</p>
+  <p><strong>Kontakt via e-post:</strong> Lägg till en e-postadress som du själv kontrollerar innan du publicerar webbplatsen.</p>
+  <p class="muted">Ingen kontaktadress har lagts in automatiskt eftersom vi inte ska hitta på en e-postadress.</p>
+  <button class="primary" onclick="showPublicPage('home')">Till startsidan</button>
+</section>
+
+<section id="publicPrivacy" class="section page-content hidden">
+  <h1>Integritetspolicy</h1>
+  <p>Den här webbplatsen innehåller en demonstration med inloggning och databasfunktioner. Webbplatsägaren behöver beskriva vilka uppgifter som samlas in, varför de behandlas, hur länge de sparas och hur användare kan kontakta webbplatsägaren.</p>
+  <h2>Övningsdata</h2>
+  <p>Använd endast påhittade uppgifter i demonstrationssystemet. Ange aldrig riktiga patientuppgifter, personnummer, hälsouppgifter eller andra känsliga personuppgifter.</p>
+  <h2>Inloggning och databas</h2>
+  <p>Inloggning och lagring hanteras via den anslutna databastjänsten Supabase. Webbplatsägaren ansvarar för att konfigurera behörigheter, säkerhet, lagring och information till användare korrekt.</p>
+  <h2>Cookies och annonser</h2>
+  <p>Om webbplatsen senare använder analysverktyg, annonser eller andra tjänster som använder cookies eller liknande teknik måste denna policy uppdateras med korrekt information. Nödvändiga samtycken ska inhämtas där lagen kräver det.</p>
+  <h2>Innan publicering</h2>
+  <p>Denna text är en grundmall och inte juridisk rådgivning. Webbplatsägaren måste komplettera den så att den stämmer med den faktiska behandlingen av uppgifter och tillämpliga regler.</p>
+  <button class="primary" onclick="showPublicPage('home')">Till startsidan</button>
+</section>
 </div>
-<section id="loginPanel" class="panel hidden"><button class="secondary" onclick="closeLogin()">← Tillbaka till startsidan</button><h2>Logga in</h2><label>E-post</label><input id="loginEmail" type="email" placeholder="namn@exempel.se"><label>Lösenord</label><input id="loginPassword" type="password" placeholder="Lösenord"><button class="primary" onclick="login()">Logga in</button><hr><h3>Skapa patientkonto</h3><label>Fullständigt namn</label><input id="regName" placeholder="Förnamn Efternamn"><label>E-post</label><input id="regEmail" type="email" placeholder="namn@exempel.se"><label>Lösenord</label><input id="regPassword" type="password" minlength="6" placeholder="Minst 6 tecken"><button class="primary" onclick="registerPatient()">Skapa patientkonto</button></section>
+
+<section id="loginPanel" class="panel hidden">
+  <button class="secondary" onclick="closeLogin()">← Tillbaka till startsidan</button>
+  <h2>Logga in</h2>
+  <label>E-post</label><input id="loginEmail" type="email" placeholder="namn@exempel.se">
+  <label>Lösenord</label><input id="loginPassword" type="password" placeholder="Lösenord">
+  <button class="primary" onclick="login()">Logga in</button>
+  <hr>
+  <h3>Skapa patientkonto</h3>
+  <label>Fullständigt namn</label><input id="regName" placeholder="Förnamn Efternamn">
+  <label>E-post</label><input id="regEmail" type="email" placeholder="namn@exempel.se">
+  <label>Lösenord</label><input id="regPassword" type="password" minlength="6" placeholder="Minst 6 tecken">
+  <button class="primary" onclick="registerPatient()">Skapa patientkonto</button>
+</section>
+
 <div id="message" class="hidden"></div>
-<section id="appPanel" class="hidden"><div class="panel"><div class="grid"><div><strong id="welcome">Välkommen</strong><div class="muted" id="roleText"></div></div><div style="text-align:right"><button class="danger" onclick="logout()">Logga ut</button></div></div></div><nav id="navigation"></nav><div id="page"></div></section>
+
+<section id="appPanel" class="hidden">
+  <div class="panel">
+    <div class="grid">
+      <div><strong id="welcome">Välkommen</strong><div class="muted" id="roleText"></div></div>
+      <div style="text-align:right"><button class="danger" onclick="logout()">Logga ut</button></div>
+    </div>
+  </div>
+  <nav id="navigation"></nav>
+  <div id="page"></div>
+</section>
 </main>
-<footer><div>SjukhusSystem Sverige · Fiktivt övningssystem</div><div style="margin-top:8px"><a href="#om" onclick="showPublicPage('about')">Om projektet</a><a href="#kontakt" onclick="showPublicPage('contact')">Kontakt</a><a href="#integritet" onclick="showPublicPage('privacy')">Integritetspolicy</a></div><p>Endast för demonstration och utbildning. Inte för verklig vård eller patientinformation.</p></footer>
+
+<footer>
+  <div>SjukhusSystem Sverige · Fiktivt övningssystem</div>
+  <div style="margin-top:8px">
+    <a href="#om" onclick="showPublicPage('about')">Om projektet</a>
+    <a href="#kontakt" onclick="showPublicPage('contact')">Kontakt</a>
+    <a href="#integritet" onclick="showPublicPage('privacy')">Integritetspolicy</a>
+  </div>
+  <p>Endast för demonstration och utbildning. Inte för verklig vård eller patientinformation.</p>
+</footer>
+
 <script>
-function showPublicPage(name){document.getElementById('publicPages').classList.remove('hidden');['publicHome','publicAbout','publicContact','publicPrivacy'].forEach(id=>document.getElementById(id).classList.add('hidden'));const map={home:'publicHome',about:'publicAbout',contact:'publicContact',privacy:'publicPrivacy'};document.getElementById(map[name]||'publicHome').classList.remove('hidden');document.getElementById('loginPanel').classList.add('hidden');document.getElementById('appPanel').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'});}
-function openLogin(){document.getElementById('publicPages').classList.add('hidden');document.getElementById('loginPanel').classList.remove('hidden');document.getElementById('appPanel').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'});}function closeLogin(){showPublicPage('home');}
+function showPublicPage(name){
+  document.getElementById('publicPages').classList.remove('hidden');
+  ['publicHome','publicAbout','publicContact','publicPrivacy'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  const map={home:'publicHome',about:'publicAbout',contact:'publicContact',privacy:'publicPrivacy'};
+  document.getElementById(map[name]||'publicHome').classList.remove('hidden');
+  document.getElementById('loginPanel').classList.add('hidden');
+  document.getElementById('appPanel').classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openLogin(){
+  document.getElementById('publicPages').classList.add('hidden');
+  document.getElementById('loginPanel').classList.remove('hidden');
+  document.getElementById('appPanel').classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function closeLogin(){showPublicPage('home');}
 </script>
+
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-const SUPABASE_URL='https://ysddqwzrypohnfyrpynu.supabase.co';const SUPABASE_KEY='sb_publishable_tGE0WQMWGK3Hj4CMdtAx_7AiJHbiR';const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
-let current=null,profile=null,patients=[],bookings=[],staff=[],medicines=[],labOrders=[],labResults=[],decisions=[],notes=[],referrals=[],prescriptions=[];const $=id=>document.getElementById(id);
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}function msg(t,type='success'){const e=$('message');e.textContent=t;e.className=type;window.scrollTo({top:0,behavior:'smooth'});}function clearMsg(){$('message').className='hidden';}function fail(e){console.error(e);msg(e.message||'Ett fel uppstod. Kontrollera Supabase-inställningarna.','error');}async function rows(t){const{data,error}=await supabase.from(t).select('*').order('created_at',{ascending:false});if(error)throw error;return data||[];}async function addRow(t,d){const{error}=await supabase.from(t).insert(d);if(error)throw error;}
-async function loadData(){try{if(isStaff()){const r=await Promise.all(['demo_patients','demo_bookings','demo_staff','demo_medicines','demo_lab_orders','demo_lab_results','demo_doctor_decisions','demo_medical_notes','demo_referrals','demo_prescriptions'].map(rows));[patients,bookings,staff,medicines,labOrders,labResults,decisions,notes,referrals,prescriptions]=r;}else{const r=await Promise.all(['demo_patients','demo_bookings','demo_lab_orders','demo_lab_results','demo_medical_notes','demo_referrals'].map(rows));[patients,bookings,labOrders,labResults,notes,referrals]=r;staff=[];medicines=[];decisions=[];prescriptions=[];}return true;}catch(e){fail(e);return false;}}
-async function login(){clearMsg();const email=$('loginEmail').value.trim(),password=$('loginPassword').value;if(!email||!password)return msg('Fyll i e-post och lösenord.','error');try{const{data,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;await startApp(data.user);}catch(e){fail(e);}}
-async function registerPatient(){clearMsg();const name=$('regName').value.trim(),email=$('regEmail').value.trim(),password=$('regPassword').value;if(!name||!email||password.length<6)return msg('Fyll i namn, e-post och minst 6 tecken i lösenordet.','error');try{const{data,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:name}}});if(error)throw error;if(data.session&&data.user)await startApp(data.user);else msg('Kontot är skapat. Bekräfta e-postadressen om Supabase begär det. Logga sedan in med ditt nya konto.');}catch(e){fail(e);}}
-async function startApp(user){current=user;profile=null;const{data:s,error}=await supabase.from('profiles').select('*').eq('id',user.id).maybeSingle();if(error)throw error;if(s&&['admin','doctor'].includes(s.role))profile=s;else{let{data:p,error:pe}=await supabase.from('demo_patients').select('*').eq('user_id',user.id).maybeSingle();if(pe)throw pe;if(!p){const{data:n,error:ie}=await supabase.from('demo_patients').insert({user_id:user.id,full_name:user.user_metadata?.full_name||user.email,patient_number:'PAT-'+user.id.slice(0,8).toUpperCase()}).select().single();if(ie)throw ie;p=n;}profile={role:'patient',full_name:p.full_name};}await loadData();$('publicPages').classList.add('hidden');$('loginPanel').classList.add('hidden');$('appPanel').classList.remove('hidden');$('welcome').textContent=profile.full_name||user.email;$('roleText').textContent='Roll: '+profile.role;buildNavigation();showPage('home');}
-async function logout(){await supabase.auth.signOut();current=null;profile=null;$('appPanel').classList.add('hidden');showPublicPage('home');}function isStaff(){return profile&&['admin','doctor'].includes(profile.role);}function myPatient(){return patients.find(p=>p.user_id===current.id);}function patientName(id){const p=patients.find(x=>x.id===id);return p?p.full_name:'Okänd patient';}function patientOptions(){return patients.map(p=>`<option value="${esc(p.id)}">${esc(p.full_name)} (${esc(p.patient_number||'')})</option>`).join('');}
-function buildNavigation(){const a=[['home','Översikt']];if(profile.role==='patient')a.push(['mine','Min sida']);if(isStaff())a.push(['patients','Patienter'],['bookings','Bokningar'],['staff','Personal'],['labs','Provbeställningar'],['results','Provsvar'],['decisions','Läkarbedömningar'],['notes','Journalanteckningar'],['referrals','Remisser'],['medicines','Läkemedel'],['prescriptions','Recept']);$('navigation').innerHTML=a.map(([id,l])=>`<button data-page="${id}" onclick="showPage('${id}')">${l}</button>`).join('');}
-function showPage(n){document.querySelectorAll('#navigation button').forEach(b=>b.classList.toggle('active',b.dataset.page===n));const p={home:homePage,mine:myPage,patients:patientsPage,bookings:bookingsPage,staff:staffPage,labs:labsPage,results:resultsPage,decisions:decisionsPage,notes:notesPage,referrals:referralsPage,medicines:medicinesPage,prescriptions:prescriptionsPage};if(!p[n]||(!isStaff()&&!['home','mine'].includes(n)))return;$('page').innerHTML=p[n]();}
-function stat(l,v){return `<div class="stat">${esc(l)}<strong>${v}</strong></div>`;}function list(a,f){return a.length?a.map(x=>`<div class="card">${esc(f(x))}</div>`).join(''):'<p class="muted">Inga uppgifter registrerade.</p>';}
-function homePage(){if(!isStaff())return `<h2>Välkommen</h2><div class="panel"><h3>Min sida</h3><p>Här kan du se dina egna fiktiva uppgifter och bokningar.</p><button class="primary" onclick="showPage('mine')">Öppna Min sida</button></div>`;const today=new Date().toISOString().slice(0,10),up=bookings.filter(b=>b.booking_date>=today).length;return `<h2>Översikt</h2><div class="grid">${stat('Patienter',patients.length)}${stat('Kommande bokningar',up)}${stat('Provbeställningar',labOrders.length)}${stat('Provsvar',labResults.length)}${stat('Remisser',referrals.length)}</div><div class="panel"><h3>Välkommen till systemet</h3><p>Välj en funktion i menyn. Alla uppgifter ska vara fiktiva.</p></div>`;}
-function myPage(){const p=myPatient();if(!p)return '<div class="panel"><h2>Min sida</h2><p>Patientprofilen kunde inte hittas.</p></div>';return `<h2>Min sida</h2><div class="panel"><h3>Patientprofil</h3><p><b>Namn:</b> ${esc(p.full_name)}</p><p><b>Patientnummer:</b> ${esc(p.patient_number)}</p><p><b>Telefon:</b> ${esc(p.phone)}</p></div><div class="panel"><h3>Mina bokningar</h3>${list(bookings.filter(x=>x.patient_id===p.id),x=>`${x.booking_date||''} ${x.booking_time||''} – ${x.department||''}`)}</div><div class="panel"><h3>Mina provbeställningar</h3>${list(labOrders.filter(x=>x.patient_id===p.id),x=>`${x.test_name} – ${x.status||''}`)}</div><div class="panel"><h3>Mina provsvar</h3>${list(labResults.filter(x=>x.patient_id===p.id),x=>`${x.test_name}: ${x.result_value} ${x.unit||''}`)}</div><div class="panel"><h3>Mina anteckningar</h3>${list(notes.filter(x=>x.patient_id===p.id),x=>`${x.title}: ${x.content}`)}</div><div class="panel"><h3>Mina remisser</h3>${list(referrals.filter(x=>x.patient_id===p.id),x=>`${x.department}: ${x.reason} – ${x.status||''}`)}</div>`;}
-function patientsPage(){return `<h2>Patienter</h2><div class="panel"><h3>Registrera fiktiv patient</h3><label>Namn</label><input id="pName"><label>Födelsedatum</label><input id="pBirth" type="date"><label>Telefon</label><input id="pPhone"><label>Anteckning</label><textarea id="pNote"></textarea><button class="primary" onclick="addPatient()">Spara patient</button></div><div class="panel"><h3>Patientlista</h3>${list(patients,p=>`${p.full_name} – ${p.patient_number||''} – ${p.phone||''}`)}</div>`;}async function addPatient(){try{const n=$('pName').value.trim();if(!n)return msg('Skriv patientens namn.','error');await addRow('demo_patients',{full_name:n,patient_number:'PAT-'+Date.now().toString().slice(-8),birth_date:$('pBirth').value||null,phone:$('pPhone').value.trim(),demo_note:$('pNote').value.trim()});await loadData();showPage('patients');msg('Patienten har sparats.');}catch(e){fail(e);}}
-function bookingsPage(){return `<h2>Bokningar</h2><div class="panel"><h3>Skapa bokning</h3><label>Patient</label><select id="bPatient">${patientOptions()}</select><label>Datum</label><input type="date" id="bDate"><label>Tid</label><input type="time" id="bTime"><label>Avdelning</label><input id="bDepartment"><label>Information</label><textarea id="bNote"></textarea><button class="primary" onclick="addBooking()">Spara bokning</button></div><div class="panel"><h3>Alla bokningar</h3>${list(bookings,b=>`${patientName(b.patient_id)} – ${b.booking_date} ${b.booking_time||''} – ${b.department||''}`)}</div>`;}async function addBooking(){try{if(!$('bPatient').value)return msg('Välj en patient.','error');await addRow('demo_bookings',{patient_id:$('bPatient').value,booking_date:$('bDate').value,booking_time:$('bTime').value,department:$('bDepartment').value,note:$('bNote').value});await loadData();showPage('bookings');msg('Bokningen har sparats.');}catch(e){fail(e);}}
-function staffPage(){return `<h2>Personal</h2><div class="panel"><label>Namn</label><input id="sName"><label>Yrkesroll</label><input id="sJob"><label>Avdelning</label><input id="sDept"><button class="primary" onclick="addStaff()">Spara personal</button></div><div class="panel"><h3>Personalregister</h3>${list(staff,s=>`${s.full_name} – ${s.job_title||''} – ${s.department||''}`)}</div>`;}async function addStaff(){try{await addRow('demo_staff',{full_name:$('sName').value,job_title:$('sJob').value,department:$('sDept').value});await loadData();showPage('staff');msg('Personalen har sparats.');}catch(e){fail(e);}}
-function labsPage(){return `<h2>Provbeställningar</h2><div class="panel"><h3>Ny provbeställning</h3><label>Patient</label><select id="lPatient">${patientOptions()}</select><label>Provtagningsnamn</label><input id="lTest"><label>Avdelning</label><input id="lDept"><label>Instruktioner</label><textarea id="lInstructions"></textarea><label>Status</label><select id="lStatus"><option>Beställd</option><option>Prov taget</option><option>Svar klart</option><option>Avbruten</option></select><button class="primary" onclick="addLabOrder()">Skapa beställning</button></div><div class="panel"><h3>Beställningar</h3>${list(labOrders,x=>`${patientName(x.patient_id)} – ${x.test_name} – ${x.status||''}`)}</div>`;}async function addLabOrder(){try{await addRow('demo_lab_orders',{patient_id:$('lPatient').value,doctor_id:current.id,test_name:$('lTest').value,department:$('lDept').value,instructions:$('lInstructions').value,status:$('lStatus').value,ordered_at:new Date().toISOString()});await loadData();showPage('labs');msg('Provbeställningen har sparats.');}catch(e){fail(e);}}
-function resultsPage(){return `<h2>Provsvar</h2><div class="panel"><h3>Registrera fiktivt provsvar</h3><label>Patient</label><select id="rPatient">${patientOptions()}</select><label>Provnamn</label><input id="rTest"><label>Resultat</label><input id="rValue"><label>Referensintervall</label><input id="rRange"><label>Enhet</label><input id="rUnit"><label>Kommentar</label><textarea id="rComment"></textarea><label>Status</label><select id="rStatus"><option>Klart</option><option>Under granskning</option></select><button class="primary" onclick="addResult()">Spara provsvar</button></div><div class="panel"><h3>Registrerade provsvar</h3>${list(labResults,x=>`${patientName(x.patient_id)} – ${x.test_name}: ${x.result_value} ${x.unit||''}`)}</div>`;}async function addResult(){try{await addRow('demo_lab_results',{patient_id:$('rPatient').value,test_name:$('rTest').value,result_value:$('rValue').value,reference_range:$('rRange').value,unit:$('rUnit').value,result_comment:$('rComment').value,status:$('rStatus').value,entered_by:current.id});await loadData();showPage('results');msg('Provsvar har sparats.');}catch(e){fail(e);}}
-function decisionsPage(){return `<h2>Läkarbedömningar – övning</h2><div class="panel"><label>Patient</label><select id="dPatient">${patientOptions()}</select><label>Provsvar</label><select id="dResult"><option value="">Inget valt</option>${labResults.map(r=>`<option value="${esc(r.id)}">${esc(r.test_name)} – ${esc(patientName(r.patient_id))}</option>`).join('')}</select><label>Beslut</label><textarea id="dDecision"></textarea><label>Bedömning</label><textarea id="dAssessment"></textarea><label>Handlingsplan</label><textarea id="dPlan"></textarea><button class="primary" onclick="addDecision()">Spara bedömning</button></div><div class="panel"><h3>Registrerade bedömningar</h3>${list(decisions,x=>`${patientName(x.patient_id)} – ${x.decision} – ${x.assessment} – ${x.action_plan}`)}</div>`;}async function addDecision(){try{await addRow('demo_doctor_decisions',{patient_id:$('dPatient').value,doctor_id:current.id,result_id:$('dResult').value||null,decision:$('dDecision').value,assessment:$('dAssessment').value,action_plan:$('dPlan').value});await loadData();showPage('decisions');msg('Bedömningen har sparats.');}catch(e){fail(e);}}
-function notesPage(){return `<h2>Journalanteckningar – övning</h2><div class="notice">Använd endast fiktiva uppgifter. Detta är inte en riktig journal.</div><div class="panel"><label>Patient</label><select id="nPatient">${patientOptions()}</select><label>Typ av anteckning</label><input id="nType"><label>Rubrik</label><input id="nTitle"><label>Innehåll</label><textarea id="nContent"></textarea><button class="primary" onclick="addNote()">Spara anteckning</button></div><div class="panel"><h3>Anteckningar</h3>${list(notes,x=>`${patientName(x.patient_id)} – ${x.note_type||''} – ${x.title}: ${x.content}`)}</div>`;}async function addNote(){try{await addRow('demo_medical_notes',{patient_id:$('nPatient').value,staff_id:current.id,note_type:$('nType').value,title:$('nTitle').value,content:$('nContent').value});await loadData();showPage('notes');msg('Anteckningen har sparats.');}catch(e){fail(e);}}
-function referralsPage(){return `<h2>Remisser – övning</h2><div class="panel"><label>Patient</label><select id="fPatient">${patientOptions()}</select><label>Avdelning</label><input id="fDept"><label>Orsak</label><textarea id="fReason"></textarea><label>Status</label><select id="fStatus"><option>Skapad</option><option>Skickad</option><option>Besvarad</option></select><button class="primary" onclick="addReferral()">Skapa remiss</button></div><div class="panel"><h3>Remisslista</h3>${list(referrals,x=>`${patientName(x.patient_id)} – ${x.department} – ${x.reason} – ${x.status||''}`)}</div>`;}async function addReferral(){try{await addRow('demo_referrals',{patient_id:$('fPatient').value,doctor_id:current.id,department:$('fDept').value,reason:$('fReason').value,status:$('fStatus').value});await loadData();showPage('referrals');msg('Remissen har sparats.');}catch(e){fail(e);}}
-function medicinesPage(){return `<h2>Läkemedel – övningsregister</h2><div class="notice">Endast fiktiva övningsposter. Inga riktiga läkemedelsråd eller recept skapas.</div><div class="panel"><label>Namn</label><input id="mName"><label>Styrka</label><input id="mStrength"><label>Typ</label><input id="mType"><button class="primary" onclick="addMedicine()">Spara läkemedel</button></div><div class="panel"><h3>Register</h3>${list(medicines,x=>`${x.name} – ${x.strength||''} – ${x.medicine_type||''}`)}</div>`;}async function addMedicine(){try{await addRow('demo_medicines',{name:$('mName').value,strength:$('mStrength').value,medicine_type:$('mType').value});await loadData();showPage('medicines');msg('Läkemedlet har sparats.');}catch(e){fail(e);}}
-function prescriptionsPage(){return `<h2>Recept – övning</h2><div class="notice">Detta är endast en fiktiv övningsfunktion. Inga riktiga recept skapas.</div><div class="panel"><label>Patient</label><select id="rxPatient">${patientOptions()}</select><label>Läkemedel</label><select id="rxMedicine">${medicines.map(m=>`<option value="${esc(m.id)}">${esc(m.name)} – ${esc(m.strength||'')}</option>`).join('')}</select><label>Dosering (övning)</label><input id="rxDosage"><label>Behandlingstid (övning)</label><input id="rxDuration"><label>Antal</label><input id="rxQuantity" type="number"><label>Status</label><select id="rxStatus"><option>Utkast</option><option>Avslutat</option></select><button class="primary" onclick="addPrescription()">Spara övningspost</button></div><div class="panel"><h3>Övningsregister</h3>${list(prescriptions,x=>`${patientName(x.patient_id)} – ${medicines.find(m=>m.id===x.medicine_id)?.name||'Läkemedel'} – ${x.status||''}`)}</div>`;}async function addPrescription(){try{if(!$('rxMedicine').value)return msg('Lägg först till ett läkemedel.','error');await addRow('demo_prescriptions',{patient_id:$('rxPatient').value,doctor_id:current.id,medicine_id:$('rxMedicine').value,demo_dosage:$('rxDosage').value,demo_duration:$('rxDuration').value,quantity:Number($('rxQuantity').value),status:$('rxStatus').value});await loadData();showPage('prescriptions');msg('Övningsposten har sparats.');}catch(e){fail(e);}}
-Object.assign(window,{login,registerPatient,logout,showPage,addPatient,addBooking,addStaff,addLabOrder,addResult,addDecision,addNote,addReferral,addMedicine,addPrescription});const{data:{session}}=await supabase.auth.getSession();if(session?.user){try{await startApp(session.user);}catch(e){fail(e);}}
+
+const SUPABASE_URL='https://ysddqwzrypohnfyrpynu.supabase.co';
+const SUPABASE_KEY='sb_publishable_tGE0WQMWGK3Hj4CMdtAx_7AiJHbiR';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+
+let current=null,profile=null,patients=[],bookings=[],staff=[],medicines=[],labOrders=[],labResults=[],decisions=[],notes=[],referrals=[],prescriptions=[];
+const $=id=>document.getElementById(id);
+
+function esc(v){
+  return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function msg(t,type='success'){
+  const e=$('message');e.textContent=t;e.className=type;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function clearMsg(){$('message').className='hidden';}
+function fail(e){
+  console.error(e);
+  msg(e.message||'Ett fel uppstod. Kontrollera Supabase-inställningarna.','error');
+}
+async function rows(t){
+  const{data,error}=await supabase.from(t).select('*').order('created_at',{ascending:false});
+  if(error)throw error;
+  return data||[];
+}
+async function addRow(t,d){
+  const{error}=await supabase.from(t).insert(d);
+  if(error)throw error;
+}
+
+async function loadData(){
+  try{
+    if(isStaff()){
+      const r=await Promise.all(['demo_patients','demo_bookings','demo_staff','demo_medicines','demo_lab_orders','demo_lab_results','demo_doctor_decisions','demo_medical_notes','demo_referrals','demo_prescriptions'].map(rows));
+      [patients,bookings,staff,medicines,labOrders,labResults,decisions,notes,referrals,prescriptions]=r;
+    }else{
+      const r=await Promise.all(['demo_patients','demo_bookings','demo_lab_orders','demo_lab_results','demo_medical_notes','demo_referrals'].map(rows));
+      [patients,bookings,labOrders,labResults,notes,referrals]=r;
+      staff=[];medicines=[];decisions=[];prescriptions=[];
+    }
+    return true;
+  }catch(e){fail(e);return false;}
+}
+
+async function login(){
+  clearMsg();
+  const email=$('loginEmail').value.trim(),password=$('loginPassword').value;
+  if(!email||!password)return msg('Fyll i e-post och lösenord.','error');
+  try{
+    const{data,error}=await supabase.auth.signInWithPassword({email,password});
+    if(error)throw error;
+    await startApp(data.user);
+  }catch(e){fail(e);}
+}
+
+async function registerPatient(){
+  clearMsg();
+  const name=$('regName').value.trim(),email=$('regEmail').value.trim(),password=$('regPassword').value;
+  if(!name||!email||password.length<6)return msg('Fyll i namn, e-post och minst 6 tecken i lösenordet.','error');
+  try{
+    const{data,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:name}}});
+    if(error)throw error;
+    if(data.session&&data.user)await startApp(data.user);
+    else msg('Kontot är skapat. Bekräfta e-postadressen om Supabase begär det. Logga sedan in med ditt nya konto.');
+  }catch(e){fail(e);}
+}
+
+async function startApp(user){
+  current=user;profile=null;
+  const{data:s,error}=await supabase.from('profiles').select('*').eq('id',user.id).maybeSingle();
+  if(error)throw error;
+  if(s&&['admin','doctor'].includes(s.role))profile=s;
+  else{
+    let{data:p,error:pe}=await supabase.from('demo_patients').select('*').eq('user_id',user.id).maybeSingle();
+    if(pe)throw pe;
+    if(!p){
+      const{data:n,error:ie}=await supabase.from('demo_patients').insert({
+        user_id:user.id,
+        full_name:user.user_metadata?.full_name||user.email,
+        patient_number:'PAT-'+user.id.slice(0,8).toUpperCase()
+      }).select().single();
+      if(ie)throw ie;
+      p=n;
+    }
+    profile={role:'patient',full_name:p.full_name};
+  }
+  await loadData();
+  $('publicPages').classList.add('hidden');
+  $('loginPanel').classList.add('hidden');
+  $('appPanel').classList.remove('hidden');
+  $('welcome').textContent=profile.full_name||user.email;
+  $('roleText').textContent='Roll: '+profile.role;
+  buildNavigation();
+  showPage('home');
+}
+
+async function logout(){
+  await supabase.auth.signOut();
+  current=null;profile=null;
+  $('appPanel').classList.add('hidden');
+  showPublicPage('home');
+}
+
+function isStaff(){return profile&&['admin','doctor'].includes(profile.role);}
+function myPatient(){return patients.find(p=>p.user_id===current.id);}
+function patientName(id){
+  const p=patients.find(x=>x.id===id);
+  return p?p.full_name:'Okänd patient';
+}
+function patientOptions(){
+  return patients.map(p=>`<option value="${esc(p.id)}">${esc(p.full_name)} (${esc(p.patient_number||'')})</option>`).join('');
+}
+
+function buildNavigation(){
+  const a=[['home','Översikt']];
+  if(profile.role==='patient')a.push(['mine','Min sida']);
+  if(isStaff())a.push(
+    ['patients','Patienter'],['bookings','Bokningar'],['staff','Personal'],
+    ['labs','Provbeställningar'],['results','Provsvar'],['decisions','Läkarbedömningar'],
+    ['notes','Journalanteckningar'],['referrals','Remisser'],['medicines','Läkemedel'],
+    ['prescriptions','Recept']
+  );
+  $('navigation').innerHTML=a.map(([id,l])=>`<button data-page="${id}" onclick="showPage('${id}')">${l}</button>`).join('');
+}
+
+function showPage(n){
+  document.querySelectorAll('#navigation button').forEach(b=>b.classList.toggle('active',b.dataset.page===n));
+  const p={
+    home:homePage,mine:myPage,patients:patientsPage,bookings:bookingsPage,
+    staff:staffPage,labs:labsPage,results:resultsPage,decisions:decisionsPage,
+    notes:notesPage,referrals:referralsPage,medicines:medicinesPage,
+    prescriptions:prescriptionsPage
+  };
+  if(!p[n]||(!isStaff()&&!['home','mine'].includes(n)))return;
+  $('page').innerHTML=p[n]();
+}
+
+function stat(l,v){return `<div class="stat">${esc(l)}<strong>${v}</strong></div>`;}
+function list(a,f){return a.length?a.map(x=>`<div class="card">${esc(f(x))}</div>`).join(''):'<p class="muted">Inga uppgifter registrerade.</p>';}
+
+function homePage(){
+  if(!isStaff())return `<h2>Välkommen</h2><div class="panel"><h3>Min sida</h3><p>Här kan du se dina egna fiktiva uppgifter och bokningar.</p><button class="primary" onclick="showPage('mine')">Öppna Min sida</button></div>`;
+  const today=new Date().toISOString().slice(0,10),up=bookings.filter(b=>b.booking_date>=today).length;
+  return `<h2>Översikt</h2><div class="grid">${stat('Patienter',patients.length)}${stat('Kommande bokningar',up)}${stat('Provbeställningar',labOrders.length)}${stat('Provsvar',labResults.length)}${stat('Remisser',referrals.length)}</div><div class="panel"><h3>Välkommen till systemet</h3><p>Välj en funktion i menyn. Alla uppgifter ska vara fiktiva.</p></div>`;
+}
+
+function myPage(){
+  const p=myPatient();
+  if(!p)return '<div class="panel"><h2>Min sida</h2><p>Patientprofilen kunde inte hittas.</p></div>';
+  return `<h2>Min sida</h2>
+  <div class="panel"><h3>Patientprofil</h3><p><b>Namn:</b> ${esc(p.full_name)}</p><p><b>Patientnummer:</b> ${esc(p.patient_number)}</p><p><b>Telefon:</b> ${esc(p.phone)}</p></div>
+  <div class="panel"><h3>Mina bokningar</h3>${list(bookings.filter(x=>x.patient_id===p.id),x=>`${x.booking_date||''} ${x.booking_time||''} – ${x.department||''}`)}</div>
+  <div class="panel"><h3>Mina provbeställningar</h3>${list(labOrders.filter(x=>x.patient_id===p.id),x=>`${x.test_name} – ${x.status||''}`)}</div>
+  <div class="panel"><h3>Mina provsvar</h3>${list(labResults.filter(x=>x.patient_id===p.id),x=>`${x.test_name}: ${x.result_value} ${x.unit||''}`)}</div>
+  <div class="panel"><h3>Mina anteckningar</h3>${list(notes.filter(x=>x.patient_id===p.id),x=>`${x.title}: ${x.content}`)}</div>
+  <div class="panel"><h3>Mina remisser</h3>${list(referrals.filter(x=>x.patient_id===p.id),x=>`${x.department}: ${x.reason} – ${x.status||''}`)}</div>`;
+}
+
+function patientsPage(){
+  return `<h2>Patienter</h2><div class="panel"><h3>Registrera fiktiv patient</h3>
+  <label>Namn</label><input id="pName">
+  <label>Födelsedatum</label><input id="pBirth" type="date">
+  <label>Telefon</label><input id="pPhone">
+  <label>Anteckning</label><textarea id="pNote"></textarea>
+  <button class="primary" onclick="addPatient()">Spara patient</button></div>
+  <div class="panel"><h3>Patientlista</h3>${list(patients,p=>`${p.full_name} – ${p.patient_number||''} – ${p.phone||''}`)}</div>`;
+}
+async function addPatient(){
+  try{
+    const n=$('pName').value.trim();
+    if(!n)return msg('Skriv patientens namn.','error');
+    await addRow('demo_patients',{
+      full_name:n,patient_number:'PAT-'+Date.now().toString().slice(-8),
+      birth_date:$('pBirth').value||null,phone:$('pPhone').value.trim(),
+      demo_note:$('pNote').value.trim()
+    });
+    await loadData();showPage('patients');msg('Patienten har sparats.');
+  }catch(e){fail(e);}
+}
+
+function bookingsPage(){
+  return `<h2>Bokningar</h2><div class="panel"><h3>Skapa bokning</h3>
+  <label>Patient</label><select id="bPatient">${patientOptions()}</select>
+  <label>Datum</label><input type="date" id="bDate">
+  <label>Tid</label><input type="time" id="bTime">
+  <label>Avdelning</label><input id="bDepartment">
+  <label>Information</label><textarea id="bNote"></textarea>
+  <button class="primary" onclick="addBooking()">Spara bokning</button></div>
+  <div class="panel"><h3>Alla bokningar</h3>${list(bookings,b=>`${patientName(b.patient_id)} – ${b.booking_date} ${b.booking_time||''} – ${b.department||''}`)}</div>`;
+}
+async function addBooking(){
+  try{
+    if(!$('bPatient').value)return msg('Välj en patient.','error');
+    await addRow('demo_bookings',{
+      patient_id:$('bPatient').value,booking_date:$('bDate').value,
+      booking_time:$('bTime').value,department:$('bDepartment').value,note:$('bNote').value
+    });
+    await loadData();showPage('bookings');msg('Bokningen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function staffPage(){
+  return `<h2>Personal</h2><div class="panel">
+  <label>Namn</label><input id="sName">
+  <label>Yrkesroll</label><input id="sJob">
+  <label>Avdelning</label><input id="sDept">
+  <button class="primary" onclick="addStaff()">Spara personal</button></div>
+  <div class="panel"><h3>Personalregister</h3>${list(staff,s=>`${s.full_name} – ${s.job_title||''} – ${s.department||''}`)}</div>`;
+}
+async function addStaff(){
+  try{
+    await addRow('demo_staff',{full_name:$('sName').value,job_title:$('sJob').value,department:$('sDept').value});
+    await loadData();showPage('staff');msg('Personalen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function labsPage(){
+  return `<h2>Provbeställningar</h2><div class="panel"><h3>Ny provbeställning</h3>
+  <label>Patient</label><select id="lPatient">${patientOptions()}</select>
+  <label>Provtagningsnamn</label><input id="lTest">
+  <label>Avdelning</label><input id="lDept">
+  <label>Instruktioner</label><textarea id="lInstructions"></textarea>
+  <label>Status</label><select id="lStatus"><option>Beställd</option><option>Prov taget</option><option>Svar klart</option><option>Avbruten</option></select>
+  <button class="primary" onclick="addLabOrder()">Skapa beställning</button></div>
+  <div class="panel"><h3>Beställningar</h3>${list(labOrders,x=>`${patientName(x.patient_id)} – ${x.test_name} – ${x.status||''}`)}</div>`;
+}
+async function addLabOrder(){
+  try{
+    await addRow('demo_lab_orders',{
+      patient_id:$('lPatient').value,doctor_id:current.id,test_name:$('lTest').value,
+      department:$('lDept').value,instructions:$('lInstructions').value,
+      status:$('lStatus').value,ordered_at:new Date().toISOString()
+    });
+    await loadData();showPage('labs');msg('Provbeställningen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function resultsPage(){
+  return `<h2>Provsvar</h2><div class="panel"><h3>Registrera fiktivt provsvar</h3>
+  <label>Patient</label><select id="rPatient">${patientOptions()}</select>
+  <label>Provnamn</label><input id="rTest">
+  <label>Resultat</label><input id="rValue">
+  <label>Referensintervall</label><input id="rRange">
+  <label>Enhet</label><input id="rUnit">
+  <label>Kommentar</label><textarea id="rComment"></textarea>
+  <label>Status</label><select id="rStatus"><option>Klart</option><option>Under granskning</option></select>
+  <button class="primary" onclick="addResult()">Spara provsvar</button></div>
+  <div class="panel"><h3>Registrerade provsvar</h3>${list(labResults,x=>`${patientName(x.patient_id)} – ${x.test_name}: ${x.result_value} ${x.unit||''}`)}</div>`;
+}
+async function addResult(){
+  try{
+    await addRow('demo_lab_results',{
+      patient_id:$('rPatient').value,test_name:$('rTest').value,
+      result_value:$('rValue').value,reference_range:$('rRange').value,
+      unit:$('rUnit').value,result_comment:$('rComment').value,
+      status:$('rStatus').value,entered_by:current.id
+    });
+    await loadData();showPage('results');msg('Provsvar har sparats.');
+  }catch(e){fail(e);}
+}
+
+function decisionsPage(){
+  return `<h2>Läkarbedömningar – övning</h2><div class="panel">
+  <label>Patient</label><select id="dPatient">${patientOptions()}</select>
+  <label>Provsvar</label><select id="dResult"><option value="">Inget valt</option>${labResults.map(r=>`<option value="${esc(r.id)}">${esc(r.test_name)} – ${esc(patientName(r.patient_id))}</option>`).join('')}</select>
+  <label>Beslut</label><textarea id="dDecision"></textarea>
+  <label>Bedömning</label><textarea id="dAssessment"></textarea>
+  <label>Handlingsplan</label><textarea id="dPlan"></textarea>
+  <button class="primary" onclick="addDecision()">Spara bedömning</button></div>
+  <div class="panel"><h3>Registrerade bedömningar</h3>${list(decisions,x=>`${patientName(x.patient_id)} – ${x.decision} – ${x.assessment} – ${x.action_plan}`)}</div>`;
+}
+async function addDecision(){
+  try{
+    await addRow('demo_doctor_decisions',{
+      patient_id:$('dPatient').value,doctor_id:current.id,
+      result_id:$('dResult').value||null,decision:$('dDecision').value,
+      assessment:$('dAssessment').value,action_plan:$('dPlan').value
+    });
+    await loadData();showPage('decisions');msg('Bedömningen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function notesPage(){
+  return `<h2>Journalanteckningar – övning</h2>
+  <div class="notice">Använd endast fiktiva uppgifter. Detta är inte en riktig journal.</div>
+  <div class="panel">
+  <label>Patient</label><select id="nPatient">${patientOptions()}</select>
+  <label>Typ av anteckning</label><input id="nType">
+  <label>Rubrik</label><input id="nTitle">
+  <label>Innehåll</label><textarea id="nContent"></textarea>
+  <button class="primary" onclick="addNote()">Spara anteckning</button></div>
+  <div class="panel"><h3>Anteckningar</h3>${list(notes,x=>`${patientName(x.patient_id)} – ${x.note_type||''} – ${x.title}: ${x.content}`)}</div>`;
+}
+async function addNote(){
+  try{
+    await addRow('demo_medical_notes',{
+      patient_id:$('nPatient').value,staff_id:current.id,
+      note_type:$('nType').value,title:$('nTitle').value,content:$('nContent').value
+    });
+    await loadData();showPage('notes');msg('Anteckningen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function referralsPage(){
+  return `<h2>Remisser – övning</h2><div class="panel">
+  <label>Patient</label><select id="fPatient">${patientOptions()}</select>
+  <label>Avdelning</label><input id="fDept">
+  <label>Orsak</label><textarea id="fReason"></textarea>
+  <label>Status</label><select id="fStatus"><option>Skapad</option><option>Skickad</option><option>Besvarad</option></select>
+  <button class="primary" onclick="addReferral()">Skapa remiss</button></div>
+  <div class="panel"><h3>Remisslista</h3>${list(referrals,x=>`${patientName(x.patient_id)} – ${x.department} – ${x.reason} – ${x.status||''}`)}</div>`;
+}
+async function addReferral(){
+  try{
+    await addRow('demo_referrals',{
+      patient_id:$('fPatient').value,doctor_id:current.id,
+      department:$('fDept').value,reason:$('fReason').value,status:$('fStatus').value
+    });
+    await loadData();showPage('referrals');msg('Remissen har sparats.');
+  }catch(e){fail(e);}
+}
+
+function medicinesPage(){
+  return `<h2>Läkemedel – övningsregister</h2>
+  <div class="notice">Endast fiktiva övningsposter. Inga riktiga läkemedelsråd eller recept skapas.</div>
+  <div class="panel">
+  <label>Namn</label><input id="mName">
+  <label>Styrka</label><input id="mStrength">
+  <label>Typ</label><input id="mType">
+  <button class="primary" onclick="addMedicine()">Spara läkemedel</button></div>
+  <div class="panel"><h3>Register</h3>${list(medicines,x=>`${x.name} – ${x.strength||''} – ${x.medicine_type||''}`)}</div>`;
+}
+async function addMedicine(){
+  try{
+    await addRow('demo_medicines',{
+      name:$('mName').value,strength:$('mStrength').value,medicine_type:$('mType').value
+    });
+    await loadData();showPage('medicines');msg('Läkemedlet har sparats.');
+  }catch(e){fail(e);}
+}
+
+function prescriptionsPage(){
+  return `<h2>Recept – övning</h2>
+  <div class="notice">Detta är endast en fiktiv övningsfunktion. Inga riktiga recept skapas.</div>
+  <div class="panel">
+  <label>Patient</label><select id="rxPatient">${patientOptions()}</select>
+  <label>Läkemedel</label><select id="rxMedicine">${medicines.map(m=>`<option value="${esc(m.id)}">${esc(m.name)} – ${esc(m.strength||'')}</option>`).join('')}</select>
+  <label>Dosering (övning)</label><input id="rxDosage">
+  <label>Behandlingstid (övning)</label><input id="rxDuration">
+  <label>Antal</label><input id="rxQuantity" type="number">
+  <label>Status</label><select id="rxStatus"><option>Utkast</option><option>Avslutat</option></select>
+  <button class="primary" onclick="addPrescription()">Spara övningspost</button></div>
+  <div class="panel"><h3>Övningsregister</h3>${list(prescriptions,x=>`${patientName(x.patient_id)} – ${medicines.find(m=>m.id===x.medicine_id)?.name||'Läkemedel'} – ${x.status||''}`)}</div>`;
+}
+async function addPrescription(){
+  try{
+    if(!$('rxMedicine').value)return msg('Lägg först till ett läkemedel.','error');
+    await addRow('demo_prescriptions',{
+      patient_id:$('rxPatient').value,doctor_id:current.id,
+      medicine_id:$('rxMedicine').value,demo_dosage:$('rxDosage').value,
+      demo_duration:$('rxDuration').value,quantity:Number($('rxQuantity').value),
+      status:$('rxStatus').value
+    });
+    await loadData();showPage('prescriptions');msg('Övningsposten har sparats.');
+  }catch(e){fail(e);}
+}
+
+Object.assign(window,{
+  login,registerPatient,logout,showPage,addPatient,addBooking,addStaff,
+  addLabOrder,addResult,addDecision,addNote,addReferral,addMedicine,addPrescription
+});
+
+const{data:{session}}=await supabase.auth.getSession();
+if(session?.user){
+  try{await startApp(session.user);}
+  catch(e){fail(e);}
+}
 </script>
 </body>
 </html>
